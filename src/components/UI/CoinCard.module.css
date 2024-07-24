@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px;
+  margin: 8px;
+  min-width: 280px;
+  height: 180px;
+  background-color: rgb(44, 44, 44);
+  border-radius: 10px;
+}
+.p {
+  font-size: large;
+  margin-block-end: 0px;
+}
+.cardHeader {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardBody {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.devider {
+  border: 1px solid lightgray;
+  width: 98%;
+  margin: 0px;
+}
