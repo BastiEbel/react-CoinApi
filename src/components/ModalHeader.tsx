@@ -1,6 +1,6 @@
 import Modal from "./UI/Modal";
 
-function Header() {
+function ModalHeader() {
   return (
     <>
       <h1>Coin App</h1>
@@ -9,4 +9,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default ModalHeader;

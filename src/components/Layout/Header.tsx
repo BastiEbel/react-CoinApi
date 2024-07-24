@@ -7,7 +7,7 @@ function Header() {
         <img
           className={classes.image}
           src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
-          alt=""
+          alt="Coin Api"
         />
         <h1>Coin App</h1>
       </div>
