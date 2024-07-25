@@ -17,10 +17,10 @@ function CoinCard({ title, image, price, percent }: Coin) {
   }, [color, percent]);
 
   return (
-    <div className=" w-96 h-48 glass">
-      <div className="w-80">
+    <div className=" w-auto h-48 glass mx-2 rounded-lg">
+      <div className="w-full p-4 flex justify-between items-center">
         <img alt={title} height={50} src={image} width={50} />
-        <p>{title}</p>
+        <p className="text-gray-400 text-lg">{title}</p>
       </div>
       <div>
         <p>Price changes:</p>

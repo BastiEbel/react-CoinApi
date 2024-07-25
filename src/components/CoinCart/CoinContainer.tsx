@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import { getCoins } from "../../util/http";
 import CoinCard from "../UI/CoinCard";
-import classes from "./CoinContainer.module.css";
 import LoadingIndicator from "../UI/LoadingIndicator";
 
 type Coins = {
   id: string;
-  title: string;
+  name: string;
   image: string;
   price_change_24h: number;
   price_change_percentage_24h: number;
@@ -19,9 +22,17 @@ function CoinContainer() {
   });
   let content;
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  };
+
   if (isLoading) {
     content = (
-      <div className={classes.loading}>
+      <div className="flex justify-center items-center">
         <LoadingIndicator />
       </div>
     );
@@ -31,7 +42,7 @@ function CoinContainer() {
     content = Object.values(data).map((coin: Coins) => (
       <CoinCard
         key={coin.id}
-        title={coin.title}
+        title={coin.name}
         price={coin.price_change_24h}
         percent={coin.price_change_percentage_24h}
         image={coin.image}
@@ -39,9 +50,11 @@ function CoinContainer() {
     ));
   }
   return (
-    <>
-      <div className="md:w-full">{content}</div>
-    </>
+    <div className="w-11/12 m-auto">
+      <div className="mt-20">
+        <Slider {...settings}>{content}</Slider>
+      </div>
+    </div>
   );
 }
 

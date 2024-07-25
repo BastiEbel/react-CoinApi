@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Space Grotesk", sans-serif;
-  background: linear-gradient(135deg, #282727, #201e1e);
-  background-size: cover;
-  background-repeat: no-repeat;
+@layer base {
+  body {
+    font-family: "Space Grotesk", sans-serif;
+    background: linear-gradient(135deg, #282727, #201e1e);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
 }
 
 h2 {
