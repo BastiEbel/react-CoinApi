@@ -50,7 +50,7 @@ function CoinContainer() {
     ));
   }
   return (
-    <div className="w-11/12 m-auto">
+    <div className="w-11/12 m-auto h-52 slider-bg">
       <div className="mt-20">
         <Slider {...settings}>{content}</Slider>
       </div>

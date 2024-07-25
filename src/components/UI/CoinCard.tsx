@@ -14,21 +14,38 @@ function CoinCard({ title, image, price, percent }: Coin) {
     if (percent < 0) {
       setColor("red");
     }
-  }, [color, percent]);
+    if (price < 0) {
+      setColor("red");
+    }
+  }, [color, percent, price]);
 
   return (
-    <div className=" w-auto h-48 glass mx-2 rounded-lg">
-      <div className="w-full p-4 flex justify-between items-center">
+    <div className="w-auto h-48 glass mx-2 rounded-lg flex flex-col justify-center cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300">
+      <div className="w-full px-4 py-2 flex justify-between items-center">
         <img alt={title} height={50} src={image} width={50} />
         <p className="text-gray-400 text-lg">{title}</p>
       </div>
-      <div>
-        <p>Price changes:</p>
-        <p style={{ color: color }}>{percent.toFixed(2)} %</p>
+      <div className=" w-full px-4 py-2 flex justify-between items-center">
+        <p className="text-gray-400 text-lg">Price changes:</p>
+        <p
+          style={{
+            color: color,
+            fontSize: "1.125rem",
+          }}
+        >
+          {percent.toFixed(2)} %
+        </p>
       </div>
-      <div>
-        <p>Price:</p>
-        <p> {price.toFixed(2)} €</p>
+      <div className="w-full px-4 py-2 flex justify-between items-center">
+        <p className="text-gray-400 text-lg">Price:</p>
+        <p
+          style={{
+            color: color,
+            fontSize: "1.125rem",
+          }}
+        >
+          {price.toFixed(2)} €
+        </p>
       </div>
     </div>
   );
