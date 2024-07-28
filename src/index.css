@@ -20,10 +20,6 @@ p {
   @apply text-xl tracking-tight leading-relaxed;
 }
 
-.slider-bg {
-  background: linear-gradient(135deg, #282727, #201e1e) !important;
-}
-
 .text-area {
   resize: none;
 }

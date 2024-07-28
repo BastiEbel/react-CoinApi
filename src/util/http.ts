@@ -28,3 +28,34 @@ export async function getCoins() {
 
   return data;
 }
+
+export async function getPriceDailyCoins() {
+  const currency: string = "eur";
+  const dailyCoin: string = "bitcoin";
+  const url: string = `https://api.coingecko.com/api/v3/coins/${dailyCoin}/market_chart?vs_currency=${currency}&days=1`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data.");
+  }
+  const data = response.json() as unknown;
+
+  return data;
+}
+
+export async function getPriceWeeklyCoins() {
+  const days: string = "14";
+  const currency: string = "eur";
+  const dailyCoin: string = "bitcoin";
+  const url: string = `https://api.coingecko.com/api/v3/coins/${dailyCoin}/market_chart?vs_currency=${currency}&days=${days}&interval=daily`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data.");
+  }
+  const data = response.json() as unknown;
+
+  return data;
+}

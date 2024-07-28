@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { getCoins } from "../../util/http";
-import CoinCard from "../UI/CoinCard";
+import CoinCard from "../CoinCart/CoinCard";
 import LoadingIndicator from "../UI/LoadingIndicator";
 
 type Coins = {
@@ -17,7 +17,7 @@ type Coins = {
 
 function CoinContainer() {
   const { data, isLoading } = useQuery({
-    queryKey: ["coins"],
+    queryKey: ["allCoins"],
     queryFn: () => getCoins(),
   });
   let content;
@@ -51,7 +51,7 @@ function CoinContainer() {
   }
   return (
     <div className="w-11/12 m-auto h-52 slider-bg">
-      <div className="mt-20">
+      <div className="mb-5">
         <Slider {...settings}>{content}</Slider>
       </div>
     </div>
