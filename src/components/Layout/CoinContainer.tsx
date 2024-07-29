@@ -11,7 +11,7 @@ type Coins = {
   id: string;
   name: string;
   image: string;
-  price_change_24h: number;
+  current_price: number;
   price_change_percentage_24h: number;
 };
 
@@ -43,7 +43,7 @@ function CoinContainer() {
       <CoinCard
         key={coin.id}
         title={coin.name}
-        price={coin.price_change_24h}
+        price={coin.current_price}
         percent={coin.price_change_percentage_24h}
         image={coin.image}
       />

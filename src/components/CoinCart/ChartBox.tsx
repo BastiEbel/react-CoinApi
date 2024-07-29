@@ -1,8 +1,9 @@
-import { ChartData } from "chart.js";
 import ChartUI from "../UI/ChartUI";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { ScriptableChartContext } from "chart.js";
 import { getPriceDailyCoins } from "../../util/http";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 export default function ChartBox() {
   const { data, isLoading } = useQuery({
@@ -11,55 +12,69 @@ export default function ChartBox() {
   });
   const [getCoinPrice, setGetCoinPrice] = useState<number[]>([]);
   const [getTime, setGetTime] = useState<string[]>([]);
-
-  /* data.prices.map((res) => {
-    console.log(res);
-  }); */
   useEffect(() => {
     const coinPrice: number[] = [];
     const coinTime: string[] = [];
-    data.prices.map((singleData) => {
-      coinPrice.push(singleData[1]);
-      const timeFormat = {
-        formatMatcher: "basic",
-        hour: "numeric",
-        minute: "numeric",
-        hourCycle: "h24",
-      };
-      const currentDate = new Date(singleData[0]).toLocaleString();
-      coinTime.push(currentDate);
-    });
-    setGetTime(coinTime);
-    setGetCoinPrice(coinPrice);
+    async function fetchPrices() {
+      await (data as { prices: [string, number][] }).prices.map(
+        (singleData) => {
+          coinPrice.push(singleData[1]);
+          const currentDate = new Date(singleData[0]).toLocaleTimeString();
+          coinTime.push(currentDate);
+        }
+      );
+      setGetTime(coinTime);
+      setGetCoinPrice(coinPrice);
+    }
+
+    fetchPrices();
   }, [data]);
+
+  let content;
+
+  if (isLoading) {
+    content = (
+      <div className="flex justify-center items-center">
+        <LoadingIndicator />
+      </div>
+    );
+  }
 
   const dataset = {
     labels: getTime,
     datasets: [
       {
+        label: "Bitcoin",
         data: getCoinPrice,
         // backgroundColor: ["red", "blue"],
-        backgroundColor: (context) => {
+        backgroundColor: (context: ScriptableChartContext) => {
           if (!context.chart.chartArea) {
             return;
           }
-          const {
-            ctx,
-            chartArea: { top, bottom },
-          } = context.chart;
+          const { ctx } = context.chart;
           const gradientBg = ctx.createLinearGradient(0, 20, 100, 800);
           gradientBg.addColorStop(0.225, "transparent");
           gradientBg.addColorStop(1, "#13e2a4");
           return gradientBg;
         },
         fill: true,
-        borderColor: "white",
-        borderWidth: 2,
+        pointBackgroundColor: "white",
+        pointBorderWidth: 1,
+        pointRadius: 2,
+        with: "100%",
       },
     ],
     options: {
+      plugins: {
+        legend: {
+          display: false,
+          labels: {
+            color: "black",
+          },
+        },
+      },
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       scales: {
         y: {
           ticks: {
@@ -72,20 +87,15 @@ export default function ChartBox() {
           },
         },
       },
-      plugins: {
-        legend: {
-          display: false,
-          labels: {
-            color: "#f5f5f5",
-          },
-        },
-      },
     },
   };
 
   return (
-    <div className="w-3/4">
-      <ChartUI chartData={dataset} />
-    </div>
+    <>
+      {content}
+      <div className="w-full h-full flex items-center mr-10">
+        <ChartUI chartData={dataset} />
+      </div>
+    </>
   );
 }

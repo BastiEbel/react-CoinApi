@@ -1,3 +1,3 @@
 export default function CalcBox() {
-  return <div className="w-1/4">CalcBox</div>;
+  return <div className="w-2/5">CalcBox</div>;
 }

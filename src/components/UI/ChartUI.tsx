@@ -21,6 +21,10 @@ ChartJS.register(
   Filler
 );
 
+/* type ChartUIProps {
+  chartData: ChartData;
+} */
+
 export default function ChartUI({ chartData }: any) {
   return <Line data={chartData} />;
 }
