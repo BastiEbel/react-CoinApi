@@ -1,43 +1,58 @@
+import { useCallback, useEffect, useState } from "react";
+
 import ChartUI from "../UI/ChartUI";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { ScriptableChartContext } from "chart.js";
-import { getPriceDailyCoins } from "../../util/http";
-import LoadingIndicator from "../UI/LoadingIndicator";
+import Button from "../UI/Button";
+import { useGetPriceCoins } from "../../hooks/useGetCoin";
 
 export default function ChartBox() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["priceCoins"],
-    queryFn: () => getPriceDailyCoins(),
-  });
+  const [getDay, setGetDay] = useState<number>(1);
+  const { data } = useGetPriceCoins(getDay);
   const [getCoinPrice, setGetCoinPrice] = useState<number[]>([]);
   const [getTime, setGetTime] = useState<string[]>([]);
-  useEffect(() => {
-    const coinPrice: number[] = [];
-    const coinTime: string[] = [];
-    async function fetchPrices() {
-      await (data as { prices: [string, number][] }).prices.map(
-        (singleData) => {
-          coinPrice.push(singleData[1]);
-          const currentDate = new Date(singleData[0]).toLocaleTimeString();
-          coinTime.push(currentDate);
-        }
-      );
-      setGetTime(coinTime);
-      setGetCoinPrice(coinPrice);
-    }
-
-    fetchPrices();
-  }, [data]);
 
   let content;
+  const fetchData = useCallback(async () => {
+    const coinPrice: number[] = [];
+    const coinTime: string[] = [];
+    let currentDate: string;
 
-  if (isLoading) {
-    content = (
-      <div className="flex justify-center items-center">
-        <LoadingIndicator />
-      </div>
-    );
+    await data.prices?.map((singleData: number[]) => {
+      coinPrice.push(singleData[1]);
+      if (getDay === 1) {
+        currentDate = new Date(singleData[0]).toLocaleTimeString();
+      } else {
+        currentDate = new Date(singleData[0]).toLocaleDateString();
+      }
+      coinTime.push(currentDate);
+    });
+    setGetTime(coinTime);
+    setGetCoinPrice(coinPrice);
+  }, [getDay, data]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  function onClickOneDayHandler() {
+    if (getDay === 1) {
+      return;
+    }
+    setGetDay(1);
+  }
+
+  function onClickTwoWeeksHandler() {
+    if (getDay === 14) {
+      return;
+    }
+    setGetDay(14);
+  }
+
+  function onClickOneMonthHandler() {
+    if (getDay === 30) {
+      return;
+    }
+    setGetDay(30);
   }
 
   const dataset = {
@@ -46,7 +61,6 @@ export default function ChartBox() {
       {
         label: "Bitcoin",
         data: getCoinPrice,
-        // backgroundColor: ["red", "blue"],
         backgroundColor: (context: ScriptableChartContext) => {
           if (!context.chart.chartArea) {
             return;
@@ -61,18 +75,12 @@ export default function ChartBox() {
         pointBackgroundColor: "white",
         pointBorderWidth: 1,
         pointRadius: 2,
-        with: "100%",
+        borderColor: "white",
+        borderColorWidth: 2,
+        width: "100%",
       },
     ],
     options: {
-      plugins: {
-        legend: {
-          display: false,
-          labels: {
-            color: "black",
-          },
-        },
-      },
       responsive: true,
       maintainAspectRatio: true,
       scales: {
@@ -90,12 +98,33 @@ export default function ChartBox() {
     },
   };
 
-  return (
-    <>
-      {content}
-      <div className="w-full h-full flex items-center mr-10">
-        <ChartUI chartData={dataset} />
+  if (data) {
+    content = (
+      <div className="w-full h-full flex flex-col items-center mr-10">
+        <div className="w-full">
+          <Button
+            style="shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            onClick={onClickOneDayHandler}
+          >
+            1 Day
+          </Button>
+          <Button
+            style="shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            onClick={onClickTwoWeeksHandler}
+          >
+            14 Days
+          </Button>
+          <Button
+            style=" shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            onClick={onClickOneMonthHandler}
+          >
+            30 Days
+          </Button>
+        </div>
+        <ChartUI data={dataset} />
       </div>
-    </>
-  );
+    );
+  }
+
+  return <>{content}</>;
 }

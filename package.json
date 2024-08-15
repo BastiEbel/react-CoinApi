@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.2",
+    "@reduxjs/toolkit": "^2.2.7",
     "@tanstack/react-query": "^5.51.11",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
@@ -22,6 +23,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.3.1",
     "react-fakers": "^1.0.3-rc1",
+    "react-redux": "^9.1.2",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
   },

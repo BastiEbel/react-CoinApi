@@ -9,6 +9,7 @@ import {
   LinearScale,
   PointElement,
   Filler,
+  ChartData,
 } from "chart.js";
 ChartJS.register(
   Title,
@@ -21,10 +22,10 @@ ChartJS.register(
   Filler
 );
 
-/* type ChartUIProps {
-  chartData: ChartData;
-} */
+type ChartUIProps = {
+  data: ChartData<"line">;
+};
 
-export default function ChartUI({ chartData }: any) {
-  return <Line data={chartData} />;
+export default function ChartUI({ data }: ChartUIProps) {
+  return <Line data={data} redraw={true} />;
 }

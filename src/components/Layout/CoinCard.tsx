@@ -20,9 +20,15 @@ function CoinCard({ title, image, price, percent }: Coin) {
   }, [color, percent, price]);
 
   return (
-    <div className="w-auto h-48 glass mx-2 rounded-lg flex flex-col justify-center cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300">
+    <div className="w-auto h-48 border-white glass mx-2 rounded-lg flex flex-col justify-center">
       <div className="w-full px-4 py-2 flex justify-between items-center">
-        <img alt={title} height={50} src={image} width={50} />
+        <img
+          className="text-gray-400"
+          alt="Logo"
+          height={50}
+          src={image}
+          width={50}
+        />
         <p className="text-gray-400 text-lg">{title}</p>
       </div>
       <div className=" w-full px-4 py-2 flex justify-between items-center">
