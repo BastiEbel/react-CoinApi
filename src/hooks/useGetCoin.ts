@@ -33,11 +33,11 @@ export function useGetPriceCoins(getDay: number) {
   const days: number = getDay;
   const currency: string = "eur";
   const dailyCoin: string = "bitcoin";
-  let url: string;
 
   return useQuery({
     queryKey: ["priceCoins", days],
     queryFn: async () => {
+      let url: string;
       if (days === 14 || days === 30) {
         url = `https://api.coingecko.com/api/v3/coins/${dailyCoin}/market_chart?vs_currency=${currency}&days=${days}&interval=daily`;
       } else {

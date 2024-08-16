@@ -7,7 +7,7 @@ import { useGetPriceCoins } from "../../hooks/useGetCoin";
 
 export default function ChartBox() {
   const [getDay, setGetDay] = useState<number>(1);
-  const { data } = useGetPriceCoins(getDay);
+  const { data, isFetched } = useGetPriceCoins(getDay);
   const [getCoinPrice, setGetCoinPrice] = useState<number[]>([]);
   const [getTime, setGetTime] = useState<string[]>([]);
 
@@ -17,18 +17,20 @@ export default function ChartBox() {
     const coinTime: string[] = [];
     let currentDate: string;
 
-    await data.prices?.map((singleData: number[]) => {
-      coinPrice.push(singleData[1]);
-      if (getDay === 1) {
-        currentDate = new Date(singleData[0]).toLocaleTimeString();
-      } else {
-        currentDate = new Date(singleData[0]).toLocaleDateString();
-      }
-      coinTime.push(currentDate);
-    });
+    if (isFetched) {
+      await data.prices?.map((singleData: number[]) => {
+        coinPrice.push(singleData[1]);
+        if (getDay === 1) {
+          currentDate = new Date(singleData[0]).toLocaleTimeString();
+        } else {
+          currentDate = new Date(singleData[0]).toLocaleDateString();
+        }
+        coinTime.push(currentDate);
+      });
+    }
     setGetTime(coinTime);
     setGetCoinPrice(coinPrice);
-  }, [getDay, data]);
+  }, [getDay, data, isFetched]);
 
   useEffect(() => {
     fetchData();
