@@ -73,6 +73,7 @@ export default function ChartBox() {
           gradientBg.addColorStop(1, "#13e2a4");
           return gradientBg;
         },
+
         fill: true,
         pointBackgroundColor: "white",
         pointBorderWidth: 1,
@@ -102,22 +103,34 @@ export default function ChartBox() {
 
   if (data) {
     content = (
-      <div className="w-full h-full flex flex-col items-center mr-10">
-        <div className="w-full">
+      <div className="w-full py-4 flex flex-col items-center mr-10">
+        <div className="w-full pl-8">
           <Button
-            style="shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            style={`${
+              getDay === 1
+                ? "  text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
+                : ""
+            }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
             onClick={onClickOneDayHandler}
           >
             1 Day
           </Button>
           <Button
-            style="shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            style={`${
+              getDay === 14
+                ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
+                : ""
+            }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
             onClick={onClickTwoWeeksHandler}
           >
             14 Days
           </Button>
           <Button
-            style=" shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            style={`${
+              getDay === 30
+                ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
+                : ""
+            }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
             onClick={onClickOneMonthHandler}
           >
             30 Days
