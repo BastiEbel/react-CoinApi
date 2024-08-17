@@ -5,9 +5,10 @@ type Coin = {
   image: string;
   price: number;
   percent: number;
+  onClick: () => void;
 };
 
-function CoinCard({ title, image, price, percent }: Coin) {
+function CoinCard({ title, image, price, percent, onClick }: Coin) {
   const [color, setColor] = useState("#00dc00");
 
   useEffect(() => {
@@ -20,7 +21,10 @@ function CoinCard({ title, image, price, percent }: Coin) {
   }, [color, percent, price]);
 
   return (
-    <div className="w-auto h-48 border-white glass mx-2 rounded-lg flex flex-col justify-center">
+    <div
+      onClick={onClick}
+      className="w-auto h-48 border-white glass mx-2 rounded-lg flex flex-col justify-center cursor-pointer"
+    >
       <div className="w-full px-4 py-2 flex justify-between items-center">
         <img
           className="text-gray-400"

@@ -7,7 +7,7 @@ import { useGetPriceCoins } from "../../hooks/useGetCoin";
 
 export default function ChartBox() {
   const [getDay, setGetDay] = useState<number>(1);
-  const { data, isFetched } = useGetPriceCoins(getDay);
+  const { data, isFetched } = useGetPriceCoins({ getDay });
   const [getCoinPrice, setGetCoinPrice] = useState<number[]>([]);
   const [getTime, setGetTime] = useState<string[]>([]);
 
@@ -73,13 +73,13 @@ export default function ChartBox() {
           gradientBg.addColorStop(1, "#13e2a4");
           return gradientBg;
         },
-
         fill: true,
         pointBackgroundColor: "white",
         pointBorderWidth: 1,
         pointRadius: 2,
         borderColor: "white",
         borderColorWidth: 2,
+        devicePixelRatio: 4,
         width: "100%",
       },
     ],
@@ -103,8 +103,8 @@ export default function ChartBox() {
 
   if (data) {
     content = (
-      <div className="w-full py-4 flex flex-col items-center mr-10">
-        <div className="w-full pl-8">
+      <div className="w-full h-max py-4 flex flex-col items-center mr-10">
+        <div className="w-full">
           <Button
             style={`${
               getDay === 1
