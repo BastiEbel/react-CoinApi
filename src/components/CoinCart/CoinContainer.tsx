@@ -4,28 +4,53 @@ import "slick-carousel/slick/slick-theme.css";
 
 import CoinCard from "../Layout/CoinCard";
 import { settings } from "../../util/constantOptions";
-import {
-  CoinData,
-  useGetCoins,
-  useGetPriceCoins,
-} from "../../hooks/useGetCoin";
-import { useState } from "react";
+import { CoinData, useGetCoins } from "../../hooks/useGetCoin";
+import { useCoinDispatch } from "../../store/hooks";
+import { selectedChartData } from "../../store/coin-slice";
+import { useCallback, useEffect } from "react";
 
 function CoinContainer() {
-  const [id, setId] = useState<string>("bitcoin");
   const { data, isError } = useGetCoins();
-  useGetPriceCoins({ id });
+  const dispatch = useCoinDispatch();
 
   let content;
+  const id = "bitcoin";
 
-  function onClickHandler(id: string) {
-    setId(id);
+  const fetchCoinData = useCallback(async () => {
+    if (Array.isArray(data)) {
+      const getData = await data[0];
+      dispatch(
+        selectedChartData({
+          id: getData.id,
+          coin: getData.name,
+          days: 1,
+          price: getData.current_price,
+          image: getData.image,
+          currency: "eur",
+        })
+      );
+    }
+  }, [dispatch, data]);
+
+  useEffect(() => {
+    fetchCoinData();
+  }, [fetchCoinData]);
+
+  function onClickHandler(
+    id: string,
+    coin: string,
+    price: number,
+    image: string
+  ) {
+    dispatch(
+      selectedChartData({ id, coin, days: 1, price, image, currency: "eur" })
+    );
   }
 
   if (isError) {
     content = (
       <CoinCard
-        onClick={() => onClickHandler}
+        onClick={() => id}
         title={"Fetching failed"}
         price={1}
         percent={1}
@@ -37,7 +62,9 @@ function CoinContainer() {
   if (Array.isArray(data)) {
     content = data.map((coin: CoinData) => (
       <CoinCard
-        onClick={() => onClickHandler(coin.id)}
+        onClick={() =>
+          onClickHandler(coin.id, coin.name, coin.current_price, coin.image)
+        }
         key={coin.id}
         title={coin.name}
         price={coin.current_price}
@@ -46,6 +73,7 @@ function CoinContainer() {
       />
     ));
   }
+
   return (
     <div className="w-11/12 m-auto h-52 slider-bg">
       <div className="mb-5">

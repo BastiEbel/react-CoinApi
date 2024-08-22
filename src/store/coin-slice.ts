@@ -3,9 +3,10 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 export type CoinItem = {
   id: string;
   coin: string;
-  days?: string;
+  days: number;
   currency: string;
   price?: number;
+  image: string;
 };
 
 type CoinState = {
@@ -20,19 +21,22 @@ export const coinSlice = createSlice({
   name: "coin",
   initialState,
   reducers: {
-    selectedDays(state, action: PayloadAction<{ id: string; days: string }>) {
-      /* const itemIndex = state.items.findIndex(
-          (item) => item.id === action.payload.id
-        );
-  
-        if (itemIndex >= 0) {
-          state.items[itemIndex].quantity++;
-        } else {
-          state.items.push({ ...action.payload, quantity: 1 });
-        } */
+    selectedChartData(
+      state,
+      action: PayloadAction<{
+        days: number;
+        coin: string;
+        id: string;
+        currency: string;
+        price: number;
+        image: string;
+      }>
+    ) {
+      state.items[0] = action.payload;
     },
-    removeFromCart(state, action: PayloadAction<string>) {
-      /* const itemIndex = state.items.findIndex(
+
+    //removeFromCart(state, action: PayloadAction<string>) {
+    /* const itemIndex = state.items.findIndex(
           (item) => item.id === action.payload
         );
   
@@ -41,6 +45,7 @@ export const coinSlice = createSlice({
         } else {
           state.items[itemIndex].quantity--;
         } */
-    },
+    //},
   },
 });
+export const { selectedChartData } = coinSlice.actions;

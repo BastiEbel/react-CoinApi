@@ -3,7 +3,7 @@ import { coinSlice } from "./coin-slice";
 
 export const store = configureStore({
   reducer: {
-    cart: coinSlice.reducer,
+    coin: coinSlice.reducer,
   },
 });
 

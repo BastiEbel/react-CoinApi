@@ -6,13 +6,13 @@ import Button from "../UI/Button";
 import { useGetPriceCoins } from "../../hooks/useGetCoin";
 
 export default function ChartBox() {
-  const [getDay, setGetDay] = useState<number>(1);
-  const { data, isFetched } = useGetPriceCoins({ getDay });
+  const [getDay, setGetDay] = useState(1);
+  const { data, isFetched } = useGetPriceCoins(getDay);
   const [getCoinPrice, setGetCoinPrice] = useState<number[]>([]);
   const [getTime, setGetTime] = useState<string[]>([]);
 
   let content;
-  const fetchData = useCallback(async () => {
+  const fetchPriceData = useCallback(async () => {
     const coinPrice: number[] = [];
     const coinTime: string[] = [];
     let currentDate: string;
@@ -28,34 +28,14 @@ export default function ChartBox() {
         coinTime.push(currentDate);
       });
     }
+
     setGetTime(coinTime);
     setGetCoinPrice(coinPrice);
   }, [getDay, data, isFetched]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  function onClickOneDayHandler() {
-    if (getDay === 1) {
-      return;
-    }
-    setGetDay(1);
-  }
-
-  function onClickTwoWeeksHandler() {
-    if (getDay === 14) {
-      return;
-    }
-    setGetDay(14);
-  }
-
-  function onClickOneMonthHandler() {
-    if (getDay === 30) {
-      return;
-    }
-    setGetDay(30);
-  }
+    fetchPriceData();
+  }, [fetchPriceData]);
 
   const dataset = {
     labels: getTime,
@@ -111,7 +91,7 @@ export default function ChartBox() {
                 ? "  text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
                 : ""
             }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
-            onClick={onClickOneDayHandler}
+            onClick={() => setGetDay(1)}
           >
             1 Day
           </Button>
@@ -121,7 +101,7 @@ export default function ChartBox() {
                 ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
                 : ""
             }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
-            onClick={onClickTwoWeeksHandler}
+            onClick={() => setGetDay(14)}
           >
             14 Days
           </Button>
@@ -131,7 +111,7 @@ export default function ChartBox() {
                 ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
                 : ""
             }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
-            onClick={onClickOneMonthHandler}
+            onClick={() => setGetDay(30)}
           >
             30 Days
           </Button>
