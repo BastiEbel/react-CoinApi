@@ -1,23 +1,30 @@
 import { useCallback, useEffect, useState } from "react";
 
 import ChartUI from "../UI/ChartUI";
-import { ScriptableChartContext } from "chart.js";
+import { ChartData, Point, ScriptableChartContext } from "chart.js";
 import Button from "../UI/Button";
 import { useGetPriceCoins } from "../../hooks/useGetCoin";
+import { useCoinSelector } from "../../store/hooks";
+
+type ChartCoinPrice = {
+  price: number[];
+  time: string[];
+  coinName: string;
+};
 
 export default function ChartBox() {
   const [getDay, setGetDay] = useState(1);
   const { data, isFetched } = useGetPriceCoins(getDay);
-  const [getCoinPrice, setGetCoinPrice] = useState<number[]>([]);
-  const [getTime, setGetTime] = useState<string[]>([]);
+  const [getCoins, setGetCoins] = useState<ChartCoinPrice>();
+  const selectedInfo = useCoinSelector((state) => state.coin.items[0]);
 
   let content;
-  const fetchPriceData = useCallback(async () => {
-    const coinPrice: number[] = [];
-    const coinTime: string[] = [];
-    let currentDate: string;
 
+  const fetchPriceData = useCallback(async () => {
     if (isFetched) {
+      const coinPrice: number[] = [];
+      const coinTime: string[] = [];
+      let currentDate: string;
       await data.prices?.map((singleData: number[]) => {
         coinPrice.push(singleData[1]);
         if (getDay === 1) {
@@ -27,22 +34,26 @@ export default function ChartBox() {
         }
         coinTime.push(currentDate);
       });
+      if (selectedInfo !== undefined) {
+        setGetCoins({
+          price: coinPrice,
+          time: coinTime,
+          coinName: selectedInfo.coin,
+        });
+      }
     }
-
-    setGetTime(coinTime);
-    setGetCoinPrice(coinPrice);
-  }, [getDay, data, isFetched]);
+  }, [getDay, data, isFetched, selectedInfo]);
 
   useEffect(() => {
     fetchPriceData();
-  }, [fetchPriceData]);
+  }, [fetchPriceData, selectedInfo, getDay, data]);
 
-  const dataset = {
-    labels: getTime,
+  const dataset: ChartData<"line", (number | Point)[], unknown> = {
+    labels: getCoins?.time.map((time) => time),
     datasets: [
       {
-        label: "Bitcoin",
-        data: getCoinPrice,
+        label: getCoins?.coinName,
+        data: getCoins?.price ? getCoins?.price.map((newData) => newData) : [],
         backgroundColor: (context: ScriptableChartContext) => {
           if (!context.chart.chartArea) {
             return;
@@ -58,27 +69,9 @@ export default function ChartBox() {
         pointBorderWidth: 1,
         pointRadius: 2,
         borderColor: "white",
-        borderColorWidth: 2,
-        devicePixelRatio: 4,
-        width: "100%",
+        borderWidth: 2,
       },
     ],
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      scales: {
-        y: {
-          ticks: {
-            color: "#f5f5f5",
-          },
-        },
-        x: {
-          ticks: {
-            color: "#f5f5f5",
-          },
-        },
-      },
-    },
   };
 
   if (data) {

@@ -41,7 +41,7 @@ export function useGetPriceCoins(getDay: number) {
   const selectedInfo = useCoinSelector((state) => state.coin.items[0]);
 
   return useQuery({
-    queryKey: ["priceCoin"],
+    queryKey: ["priceCoin", getDay, selectedInfo.id],
     refetchOnWindowFocus: false,
     enabled: getDay !== undefined || selectedInfo.id !== undefined,
     queryFn: async () => {

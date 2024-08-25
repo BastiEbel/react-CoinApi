@@ -34,7 +34,7 @@ function CoinContainer() {
 
   useEffect(() => {
     fetchCoinData();
-  }, [fetchCoinData]);
+  }, [fetchCoinData, dispatch]);
 
   function onClickHandler(
     id: string,
