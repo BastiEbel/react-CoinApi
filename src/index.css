@@ -32,7 +32,7 @@ p {
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 6px 12px 4px rgba(155, 155, 155, 0.199);
 }
 
 .shiny-effect {
