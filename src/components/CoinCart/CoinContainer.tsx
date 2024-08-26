@@ -19,6 +19,7 @@ function CoinContainer() {
   const fetchCoinData = useCallback(async () => {
     if (Array.isArray(data)) {
       const getData = await data[0];
+
       dispatch(
         selectedChartData({
           id: getData.id,

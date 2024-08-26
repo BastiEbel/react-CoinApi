@@ -27,5 +27,11 @@ type ChartUIProps = {
 };
 
 export default function ChartUI({ data }: ChartUIProps) {
-  return <Line data={data} style={{ width: "100%" }} />;
+  return (
+    <Line
+      data={data}
+      options={{ responsive: true }}
+      style={{ maxHeight: "95%" }}
+    />
+  );
 }

@@ -28,7 +28,9 @@ export default function ChartBox() {
       await data.prices?.map((singleData: number[]) => {
         coinPrice.push(singleData[1]);
         if (getDay === 1) {
-          currentDate = new Date(singleData[0]).toLocaleTimeString();
+          currentDate = new Date(singleData[0])
+            .toLocaleTimeString()
+            .replace(/(.*)\D\d+/, "$1");
         } else {
           currentDate = new Date(singleData[0]).toLocaleDateString();
         }
@@ -76,7 +78,7 @@ export default function ChartBox() {
 
   if (data) {
     content = (
-      <div className="w-full h-max py-4 flex flex-col items-center mr-10">
+      <div className=" h-5/6 p-4 flex flex-col items-center mr-10 border rounded-lg">
         <div className="w-full">
           <Button
             style={`${

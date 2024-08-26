@@ -1,7 +1,6 @@
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useCoinSelector } from "../store/hooks";
-//import { useCoinSelector } from "../store/hooks";
 
 export type CoinData = {
   id: string;
@@ -21,7 +20,13 @@ export type PropsType = {
   getId?: string;
 };
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // default: true
+    },
+  },
+});
 
 export function useGetCoins() {
   const currency: string = "eur";
@@ -40,17 +45,24 @@ export function useGetPriceCoins(getDay: number) {
   const currency: string = "eur";
   const selectedInfo = useCoinSelector((state) => state.coin.items[0]);
 
-  return useQuery({
-    queryKey: ["priceCoin", getDay, selectedInfo.id],
-    refetchOnWindowFocus: false,
-    enabled: getDay !== undefined || selectedInfo.id !== undefined,
-    queryFn: async () => {
-      let url = `https://api.coingecko.com/api/v3/coins/${selectedInfo.id}/market_chart?vs_currency=${currency}&days=${getDay}`;
-      if (getDay === 14 || getDay === 30) {
-        url = `https://api.coingecko.com/api/v3/coins/${selectedInfo.id}/market_chart?vs_currency=${currency}&days=${getDay}&interval=daily`;
-      }
-      const { data } = await axios.get(url);
+  const queryKey = ["priceCoin", getDay, selectedInfo?.id];
 
+  return useQuery({
+    queryKey,
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 30,
+    enabled: getDay !== undefined && selectedInfo?.id !== undefined,
+    queryFn: async () => {
+      const baseUrl = `https://api.coingecko.com/api/v3/coins/${
+        selectedInfo?.id || "bitcoin"
+      }/market_chart`;
+      const params = new URLSearchParams({
+        vs_currency: currency,
+        days: getDay.toString(),
+        ...(getDay !== 1 && { interval: "daily" }),
+      });
+
+      const { data } = await axios.get(`${baseUrl}?${params.toString()}`);
       return data;
     },
   });
