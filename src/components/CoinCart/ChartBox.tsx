@@ -78,7 +78,7 @@ export default function ChartBox() {
 
   if (data) {
     content = (
-      <div className=" h-5/6 p-4 flex flex-col items-center mr-10 border rounded-lg">
+      <div className=" h-5/6 p-4 flex flex-col items-center mr-10 glass rounded-lg">
         <div className="w-full">
           <Button
             style={`${
