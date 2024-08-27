@@ -22,6 +22,8 @@ export default function ChartBox() {
   });
   const selectedInfo = useCoinSelector((state) => state.coin.items[0]);
 
+  let showDay;
+
   const fetchPriceData = useCallback(async () => {
     if (isFetched && data.prices) {
       const coinPrice: number[] = [];
@@ -76,10 +78,24 @@ export default function ChartBox() {
       },
     ],
   };
+  if (getDay === 1) {
+    showDay = (
+      <h3 className="text-white text-2xl mr-6">24h {selectedInfo.coin}</h3>
+    );
+  } else if (getDay === 14) {
+    showDay = (
+      <h3 className="text-white text-2xl mr-6">14 Days {selectedInfo.coin}</h3>
+    );
+  } else {
+    showDay = (
+      <h3 className="text-white text-2xl mr-6">30 Days {selectedInfo.coin}</h3>
+    );
+  }
 
   return (
     <div className="w-5/6 h-5/6 p-4 flex flex-col items-center mr-10 glass rounded-lg">
-      <div className="w-5/6">
+      <div className="w-5/6 flex">
+        {showDay}
         <Button
           style={`${
             getDay === 1

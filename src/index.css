@@ -35,6 +35,10 @@ p {
   box-shadow: 0 6px 12px 4px rgba(155, 155, 155, 0.199);
 }
 
+*:focus {
+  outline: none;
+}
+
 .shiny-effect {
   position: absolute;
   border-radius: 50%;

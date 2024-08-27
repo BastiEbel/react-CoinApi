@@ -30,7 +30,7 @@ export default function ChartUI({ data }: ChartUIProps) {
   return (
     <Line
       data={data}
-      options={{ responsive: true }}
+      options={{ responsive: true, plugins: { legend: { display: false } } }}
       style={{ maxHeight: "95%" }}
     />
   );
