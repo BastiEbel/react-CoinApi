@@ -82,7 +82,7 @@ export default function ChartBox() {
     case 1:
       showDay = (
         <div className="text-2xl mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
-          24h {selectedInfo.coin}
+          24h {selectedInfo?.coin}
         </div>
       );
       break;

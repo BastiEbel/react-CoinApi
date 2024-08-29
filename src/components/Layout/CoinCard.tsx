@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useCoinSelector } from "../../store/hooks";
 
 type Coin = {
   title: string;
@@ -10,6 +11,7 @@ type Coin = {
 
 function CoinCard({ title, image, price, percent, onClick }: Coin) {
   const [color, setColor] = useState("#00dc00");
+  const selectCoin = useCoinSelector((state) => state.coin.items[0]);
 
   useEffect(() => {
     if (percent < 0) {
@@ -23,7 +25,9 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
   return (
     <div
       onClick={onClick}
-      className="w-auto h-48 border-white glass mx-2 rounded-lg flex flex-col justify-center cursor-pointer"
+      className={`${
+        selectCoin?.coin === title ? "selectCoin" : "glass"
+      } hover:bg-gradient-to-r from-teal-800 to-teal-950 transition duration-300 w-auto h-48  border-white mx-2 rounded-lg flex flex-col justify-center cursor-pointer`}
     >
       <div className="w-full px-4 py-2 flex justify-between items-center">
         <img
