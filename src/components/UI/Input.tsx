@@ -4,14 +4,21 @@ type InputProps = {
   style?: string;
   placeholder: string;
   value: number | undefined;
+  disable: boolean;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export default function Input({ style, placeholder, value }: InputProps) {
+export default function Input({
+  style,
+  placeholder,
+  value,
+  disable,
+}: InputProps) {
   return (
     <input
       value={value}
+      disabled={disable}
       placeholder={placeholder}
-      className={style}
+      className={`${style} bg-glass`}
       type="text"
     />
   );

@@ -36,14 +36,14 @@ p {
 }
 
 .selectCoin {
-  background: linear-gradient(135deg, #115e59, #042f2e);
+  background: linear-gradient(135deg, #0f766e, #134e4a);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 6px 12px 4px rgba(155, 155, 155, 0.199);
 }
 
-.bg-glass *:focus {
+.bg-glass:focus {
   outline: none;
 }
 

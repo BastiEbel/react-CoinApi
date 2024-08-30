@@ -44,7 +44,7 @@ function CoinContainer() {
     image: string
   ) {
     dispatch(
-      selectedChartData({ id, coin, days: 1, price, image, currency: "eur" })
+      selectedChartData({ id, coin, days: 1, price, image, currency: "EUR" })
     );
   }
 

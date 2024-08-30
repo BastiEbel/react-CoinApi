@@ -64,7 +64,7 @@ export default function ChartBox() {
             return;
           }
           const { ctx } = context.chart;
-          const gradientBg = ctx.createLinearGradient(0, 20, 100, 800);
+          const gradientBg = ctx.createLinearGradient(0, 20, 100, 650);
           gradientBg.addColorStop(0.225, "transparent");
           gradientBg.addColorStop(1, "#13e2a4");
           return gradientBg;
@@ -78,6 +78,7 @@ export default function ChartBox() {
       },
     ],
   };
+
   switch (getDay) {
     case 1:
       showDay = (
