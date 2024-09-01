@@ -27,7 +27,7 @@ function CoinContainer() {
           days: 1,
           price: getData.current_price,
           image: getData.image,
-          currency: "eur",
+          currency: "EUR",
         })
       );
     }

@@ -1,9 +1,17 @@
+import { useEffect, useState } from "react";
 import { useCoinSelector } from "../../store/hooks";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 
 export default function CalcBox() {
   const selectInfo = useCoinSelector((state) => state.coin.items[0]);
+  const [calcPrice, setCalcPrice] = useState(selectInfo?.price || 0);
+  const [amount, setAmount] = useState(1);
+
+  useEffect(() => {
+    setCalcPrice(selectInfo?.price || 0);
+  }, [selectInfo]);
+
   function onClickExchangeHandler() {}
 
   return (
@@ -16,7 +24,8 @@ export default function CalcBox() {
         <div className="w-3/4 bg-gradient-to-r from-stone-500 to-stone-700 border rounded-2xl flex items-center">
           <Input
             disable={false}
-            value={1}
+            value={amount}
+            onChange={(e) => setAmount(e.target.valueAsNumber)}
             placeholder="Amount"
             style="w-5/6 h-10 text-center text-xl bg-transparent px-2 text-gray-200 mx-2"
           />
@@ -31,7 +40,8 @@ export default function CalcBox() {
         <div className="w-3/4 bg-gradient-to-r from-stone-500 to-stone-700 border rounded-2xl flex items-center">
           <Input
             disable={true}
-            value={selectInfo?.price}
+            value={calcPrice.toFixed(2)}
+            onChange={(e) => setCalcPrice(e.target.valueAsNumber)}
             placeholder="Coin Price"
             style="w-5/6 h-10 text-center text-xl bg-transparent px-2 text-gray-300 mx-2"
           />
