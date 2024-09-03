@@ -4,11 +4,17 @@ type ButtonProps = {
   onClick: () => void;
   children: ReactNode;
   style?: string;
+  disable: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button({ onClick, style, children }: ButtonProps) {
+export default function Button({
+  onClick,
+  disable,
+  style,
+  children,
+}: ButtonProps) {
   return (
-    <button className={style} onClick={onClick}>
+    <button disabled={disable} className={style} onClick={onClick}>
       {children}
     </button>
   );

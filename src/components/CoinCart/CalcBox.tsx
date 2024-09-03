@@ -7,6 +7,7 @@ export default function CalcBox() {
   const selectInfo = useCoinSelector((state) => state.coin.items[0]);
   const [calcPrice, setCalcPrice] = useState(selectInfo?.price || 0);
   const [amount, setAmount] = useState<number>(1);
+  const [disable, setDisable] = useState<boolean>(true);
 
   useEffect(() => {
     setCalcPrice(selectInfo?.price || 0);
@@ -15,8 +16,10 @@ export default function CalcBox() {
   function onChangeHandler(event: ChangeEvent<HTMLInputElement>) {
     const value = event.target.valueAsNumber;
     if (!isNaN(value)) {
+      setDisable(false);
       setAmount(value);
     } else {
+      setDisable(true);
       setAmount(0);
     }
   }
@@ -70,8 +73,13 @@ export default function CalcBox() {
         </div>
       </div>
       <Button
+        disable={disable}
         onClick={onClickExchangeHandler}
-        style={`shadow shadow-lg h-10 w-48 bg-slate-900 text-gray-300 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+        style={`shadow shadow-lg h-10 w-48  text-gray-300 border rounded-xl mx-2 ${
+          !disable
+            ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+            : "bg-slate-600"
+        }`}
       >
         Exchange
       </Button>
