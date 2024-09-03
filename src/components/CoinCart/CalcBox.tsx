@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useCoinSelector } from "../../store/hooks";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
@@ -6,13 +6,29 @@ import Input from "../UI/Input";
 export default function CalcBox() {
   const selectInfo = useCoinSelector((state) => state.coin.items[0]);
   const [calcPrice, setCalcPrice] = useState(selectInfo?.price || 0);
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState<number>(1);
 
   useEffect(() => {
     setCalcPrice(selectInfo?.price || 0);
   }, [selectInfo]);
 
-  function onClickExchangeHandler() {}
+  function onChangeHandler(event: ChangeEvent<HTMLInputElement>) {
+    const value = event.target.valueAsNumber;
+    if (!isNaN(value)) {
+      setAmount(value);
+    } else {
+      setAmount(0);
+    }
+  }
+
+  function onClickExchangeHandler() {
+    if (amount === 1) {
+      setCalcPrice(selectInfo.price || 0);
+    } else {
+      const newPrice = calcPrice * (amount || 0);
+      setCalcPrice(newPrice);
+    }
+  }
 
   return (
     <div className="w-2/5 h-5/6 mx-8 flex flex-col items-center justify-evenly glass ">
@@ -24,9 +40,9 @@ export default function CalcBox() {
         <div className="w-3/4 bg-gradient-to-r from-stone-500 to-stone-700 border rounded-2xl flex items-center">
           <Input
             disable={false}
-            value={amount}
-            onChange={(e) => setAmount(e.target.valueAsNumber)}
-            placeholder="Amount"
+            value={amount.toString()}
+            onChange={(e) => onChangeHandler(e)}
+            placeholder="0"
             style="w-5/6 h-10 text-center text-xl bg-transparent px-2 text-gray-200 mx-2"
           />
           <div className="border border-l-0 h-6"></div>

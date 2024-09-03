@@ -15,11 +15,12 @@ export default function Input({
 }: InputProps) {
   return (
     <input
+      minLength={0}
       value={value}
       onChange={onChange}
       disabled={disable}
       placeholder={placeholder}
-      className={`${style} bg-glass`}
+      className={`${style} bg-glass [&::-webkit-inner-spin-button]:appearance-none`}
       type="number"
     />
   );
