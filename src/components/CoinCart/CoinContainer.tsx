@@ -10,11 +10,10 @@ import { selectedChartData } from "../../store/coin-slice";
 import { useCallback, useEffect } from "react";
 
 function CoinContainer() {
-  const { data, isError } = useGetCoins();
+  const { data } = useGetCoins();
   const dispatch = useCoinDispatch();
 
   let content;
-  const id = "bitcoin";
 
   const fetchCoinData = useCallback(async () => {
     if (Array.isArray(data)) {
@@ -45,18 +44,6 @@ function CoinContainer() {
   ) {
     dispatch(
       selectedChartData({ id, coin, days: 1, price, image, currency: "EUR" })
-    );
-  }
-
-  if (isError) {
-    content = (
-      <CoinCard
-        onClick={() => id}
-        title={"Fetching failed"}
-        price={1}
-        percent={1}
-        image={"Image"}
-      />
     );
   }
 

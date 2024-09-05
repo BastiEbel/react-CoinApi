@@ -6,7 +6,7 @@ import ErrorBlock from "../UI/ErrorBlock";
 import { useGetCoins } from "../../hooks/useGetCoin";
 
 function Layout() {
-  const { isError, isLoading } = useGetCoins();
+  const { data, isError, isLoading } = useGetCoins();
   let content;
 
   if (isLoading) {
@@ -19,7 +19,7 @@ function Layout() {
 
   if (isError) {
     content = (
-      <div className="flex justify-center items-center">
+      <div className=" flex justify-center items-center">
         <ErrorBlock
           title="An Error has occurred"
           message="Fetching data failed"
@@ -27,12 +27,19 @@ function Layout() {
       </div>
     );
   }
+
+  if (data) {
+    content = (
+      <>
+        <CalcChartContainer />
+        <CoinContainer />
+      </>
+    );
+  }
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
+    <div className="w-full h-screen flex flex-col items-center top-[calc(100vh-96px)">
       <Header />
       {content}
-      <CalcChartContainer />
-      <CoinContainer />
     </div>
   );
 }
