@@ -103,7 +103,7 @@ export default function ChartBox() {
   }
 
   return (
-    <div className="w-5/6 h-5/6 p-4 flex flex-col items-center mr-10 glass rounded-lg">
+    <div className="w-5/6 max-h-96 p-4 flex flex-col items-center mr-10 glass rounded-lg">
       <div className="w-5/6 flex">
         {showDay}
         <Button
@@ -113,6 +113,7 @@ export default function ChartBox() {
               : ""
           }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(1)}
+          disable={false}
         >
           1 Day
         </Button>
@@ -123,6 +124,7 @@ export default function ChartBox() {
               : ""
           }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(14)}
+          disable={false}
         >
           14 Days
         </Button>
@@ -133,6 +135,7 @@ export default function ChartBox() {
               : ""
           }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(30)}
+          disable={false}
         >
           30 Days
         </Button>

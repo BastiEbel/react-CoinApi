@@ -30,8 +30,12 @@ export default function ChartUI({ data }: ChartUIProps) {
   return (
     <Line
       data={data}
-      options={{ responsive: true, plugins: { legend: { display: false } } }}
-      style={{ maxHeight: "95%" }}
+      options={{
+        maintainAspectRatio: false,
+        responsive: true,
+        plugins: { legend: { display: false } },
+      }}
+      style={{ height: "20rem", width: "100%" }}
     />
   );
 }

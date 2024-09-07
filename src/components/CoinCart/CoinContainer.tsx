@@ -7,7 +7,6 @@ import { settings } from "../../util/constantOptions";
 import { CoinData, useGetCoins } from "../../hooks/useGetCoin";
 import { useCoinDispatch } from "../../store/hooks";
 import { selectedChartData } from "../../store/coin-slice";
-import { useCallback, useEffect } from "react";
 
 function CoinContainer() {
   const { data } = useGetCoins();
@@ -15,35 +14,23 @@ function CoinContainer() {
 
   let content;
 
-  const fetchCoinData = useCallback(async () => {
-    if (Array.isArray(data)) {
-      const getData = await data[0];
-
-      dispatch(
-        selectedChartData({
-          id: getData.id,
-          coin: getData.name,
-          days: 1,
-          price: getData.current_price,
-          image: getData.image,
-          currency: "EUR",
-        })
-      );
-    }
-  }, [dispatch, data]);
-
-  useEffect(() => {
-    fetchCoinData();
-  }, [fetchCoinData, dispatch]);
-
   function onClickHandler(
     id: string,
     coin: string,
+    percent: number,
     price: number,
     image: string
   ) {
     dispatch(
-      selectedChartData({ id, coin, days: 1, price, image, currency: "EUR" })
+      selectedChartData({
+        id,
+        coin,
+        days: 1,
+        percent,
+        price,
+        image,
+        currency: "EUR",
+      })
     );
   }
 
@@ -51,7 +38,13 @@ function CoinContainer() {
     content = data.map((coin: CoinData) => (
       <CoinCard
         onClick={() =>
-          onClickHandler(coin.id, coin.name, coin.current_price, coin.image)
+          onClickHandler(
+            coin.id,
+            coin.name,
+            coin.price_change_percentage_24h,
+            coin.current_price,
+            coin.image
+          )
         }
         key={coin.id}
         title={coin.name}

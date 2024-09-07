@@ -4,8 +4,9 @@ export type CoinItem = {
   id: string;
   coin: string;
   days: number;
+  percent: number;
   currency: string;
-  price?: number;
+  price: number;
   image: string;
 };
 
@@ -27,6 +28,7 @@ export const coinSlice = createSlice({
         days: number;
         coin: string;
         id: string;
+        percent: number;
         currency: string;
         price: number;
         image: string;

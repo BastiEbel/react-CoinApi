@@ -34,7 +34,7 @@ export default function CalcBox() {
   }
 
   return (
-    <div className="w-2/5 h-5/6 mx-8 flex flex-col items-center justify-evenly glass ">
+    <div className="w-2/5 h-96 mx-8 flex flex-col items-center justify-evenly glass ">
       <span className="text-2xl w-3/4 bg-gradient-to-r from-gray-300 to-gray-800 text-transparent bg-clip-text">
         Exchange
       </span>
@@ -78,7 +78,7 @@ export default function CalcBox() {
         style={`shadow shadow-lg h-10 w-48  text-gray-300 border rounded-xl mx-2 ${
           !disable
             ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
-            : "bg-slate-600"
+            : "bg-slate-500"
         }`}
       >
         Exchange
