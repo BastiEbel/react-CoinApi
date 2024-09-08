@@ -43,7 +43,7 @@ function Layout() {
 
   if (isLoading) {
     content = (
-      <div className="flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center">
         <LoadingIndicator />
       </div>
     );

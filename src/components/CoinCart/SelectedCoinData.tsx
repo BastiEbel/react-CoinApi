@@ -15,7 +15,7 @@ export default function SelectedCoinData() {
   }, [color, selectedCoin?.percent, selectedCoin?.price]);
 
   return (
-    <div className="w-1/4 h-40 mx-8 mt-8 glass">
+    <div className="w-1/4 mx-8 flex flex-col items-center">
       <div className="w-full px-4 py-2 flex justify-between items-center">
         <img
           className="text-gray-400"
