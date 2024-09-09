@@ -6,8 +6,9 @@
   body {
     font-family: "Space Grotesk", sans-serif;
     background: linear-gradient(135deg, #282727, #201e1e);
-    background-size: cover;
+    /* background-size: cover;
     background-repeat: no-repeat;
+    height: 100%; */
   }
 }
 

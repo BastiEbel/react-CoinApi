@@ -51,7 +51,7 @@ function Layout() {
 
   if (isError) {
     content = (
-      <div className=" flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center">
         <ErrorBlock
           title="An Error has occurred"
           message="Fetching data failed"

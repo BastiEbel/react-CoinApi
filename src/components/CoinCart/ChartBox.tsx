@@ -64,7 +64,7 @@ export default function ChartBox() {
             return;
           }
           const { ctx } = context.chart;
-          const gradientBg = ctx.createLinearGradient(0, 20, 100, 650);
+          const gradientBg = ctx.createLinearGradient(0, 20, 150, 650);
           gradientBg.addColorStop(0.225, "transparent");
           gradientBg.addColorStop(1, "#13e2a4");
           return gradientBg;
@@ -82,7 +82,7 @@ export default function ChartBox() {
   switch (getDay) {
     case 1:
       showDay = (
-        <div className="text-2xl mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="text-2xl mx-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           24h {selectedInfo?.coin}
         </div>
       );
@@ -104,7 +104,7 @@ export default function ChartBox() {
 
   return (
     <div className="w-5/6 max-h-96 px-4 pt-4 pb-8 flex flex-col items-center mr-10 glass rounded-lg">
-      <div className="w-5/6 flex">
+      <div className="w-full flex">
         {showDay}
         <Button
           style={`${
