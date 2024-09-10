@@ -94,7 +94,7 @@ export default function CalcBox() {
         style={`shadow shadow-lg h-10 w-52 text-gray-300 border rounded-2xl ${
           !disable
             ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
-            : "bg-slate-500"
+            : "bg-slate-700"
         }`}
       >
         Exchange

@@ -18,20 +18,22 @@ export default function SelectedCoinData() {
   const selectedCoin = useCoinSelector((state) => state.coin.items[0]);
 
   useEffect(() => {
-    if (Array.isArray(data)) {
-      data.map((findItem: SelectedCoinItem) => {
-        if (findItem.id === selectedCoin?.id) {
-          setItem(findItem);
-        }
-      });
+    if (Array.isArray(data) && selectedCoin) {
+      const foundItem = data.find(
+        (findItem: SelectedCoinItem) => findItem.id === selectedCoin.id
+      );
+      setItem(foundItem);
+
+      if (selectedCoin.percent < 0 || selectedCoin.price < 0) {
+        setColor("red");
+      } else {
+        setColor("#00dc00");
+      }
     }
-    if (selectedCoin?.percent < 0) {
-      setColor("red");
-    }
-    if (selectedCoin?.price < 0) {
-      setColor("red");
-    }
-  }, [color, selectedCoin, data]);
+  }, [selectedCoin, data]);
+
+  const { percent, price, currency, coin } = selectedCoin || {};
+  const { low_24h = 0, high_24h = 0 } = item || {};
 
   return (
     <div className=" mx-8 flex flex-col items-center">
@@ -43,7 +45,7 @@ export default function SelectedCoinData() {
             fontSize: "1.125rem",
           }}
         >
-          {selectedCoin?.percent.toFixed(2)} %
+          {percent?.toFixed(2)} %
         </p>
       </div>
       <div className="w-full px-4 py-2 flex justify-between items-center">
@@ -55,13 +57,11 @@ export default function SelectedCoinData() {
               marginRight: "8px",
             }}
           >
-            {formatterPrices(selectedCoin?.price)}
+            {formatterPrices(price)}
           </p>
-          <p style={{ color: "#6b7280", fontSize: "1.125rem" }}>
-            {selectedCoin?.currency}
-          </p>
+          <p style={{ color: "#6b7280", fontSize: "1.125rem" }}>{currency}</p>
         </div>
-        <p className="text-gray-500 text-lg">{selectedCoin?.coin}</p>
+        <p className="text-gray-500 text-lg">{coin}</p>
       </div>
 
       <div className="w-full px-4 py-2 flex justify-between items-center">
@@ -71,9 +71,9 @@ export default function SelectedCoinData() {
             <p
               style={{ marginRight: "8px", fontSize: "1.125rem", color: "red" }}
             >
-              {formatterPrices(item?.low_24h || 0)}
+              {formatterPrices(low_24h)}
             </p>
-            <p className="text-gray-500 text-lg"> {selectedCoin?.currency}</p>
+            <p className="text-gray-500 text-lg"> {currency}</p>
           </div>
         </div>
         <div className="border mx-4 border-gray-500 h-12"></div>
@@ -87,9 +87,9 @@ export default function SelectedCoinData() {
                 color: "#00dc00",
               }}
             >
-              {formatterPrices(item?.high_24h || 0)}
+              {formatterPrices(high_24h)}
             </p>
-            <p className="text-gray-500 text-lg">{selectedCoin?.currency}</p>
+            <p className="text-gray-500 text-lg">{currency}</p>
           </div>
         </div>
       </div>
