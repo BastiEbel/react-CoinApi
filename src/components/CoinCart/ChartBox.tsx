@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import ChartUI from "../UI/ChartUI";
+import ChartLine from "../UI/ChartLine";
 import { ChartData, Point, ScriptableChartContext } from "chart.js";
 import Button from "../UI/Button";
 import { useGetPriceCoins } from "../../hooks/useGetCoin";
@@ -140,7 +140,7 @@ export default function ChartBox() {
           30 Days
         </Button>
       </div>
-      <ChartUI chartType="line" data={dataset} />
+      <ChartLine data={dataset} />
     </div>
   );
 }
