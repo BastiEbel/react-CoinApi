@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useCoinSelector } from "../../store/hooks";
-import Button from "../UI/Button";
-import Input from "../UI/Input";
-import { formatterPrices } from "../../util/formatter";
+import { useCoinSelector } from "../../../store/hooks";
+import { formatterPrices } from "../../../util/formatter";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
 
 export default function CalcBox() {
   const selectInfo = useCoinSelector((state) => state.coin.items[0]);

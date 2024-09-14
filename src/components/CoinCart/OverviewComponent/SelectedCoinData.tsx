@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useCoinSelector } from "../../store/hooks";
-import { useGetCoins } from "../../hooks/useGetCoin";
-import { formatterPrices } from "../../util/formatter";
+import { useCoinSelector } from "../../../store/hooks";
+import { useGetCoins } from "../../../hooks/useGetCoin";
+import { formatterPrices } from "../../../util/formatter";
 
 type SelectedCoinItem = {
   id: string;

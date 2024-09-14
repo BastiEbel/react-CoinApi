@@ -2,11 +2,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import CoinCard from "../Layout/CoinCard";
-import { settings } from "../../util/constantOptions";
-import { CoinData, useGetCoins } from "../../hooks/useGetCoin";
-import { useCoinDispatch } from "../../store/hooks";
-import { selectedChartData } from "../../store/coin-slice";
+import CoinCard from "../../Layout/CoinCard";
+import { settings } from "../../../util/constantOptions";
+import { CoinData, useGetCoins } from "../../../hooks/useGetCoin";
+import { useCoinDispatch } from "../../../store/hooks";
+import { selectedChartData } from "../../../store/coin-slice";
 
 function CoinContainer() {
   const { data } = useGetCoins();

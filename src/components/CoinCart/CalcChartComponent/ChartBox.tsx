@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
-import ChartLine from "../UI/ChartLine";
+import ChartLine from "../../UI/ChartLine";
 import { ChartData, Point, ScriptableChartContext } from "chart.js";
-import Button from "../UI/Button";
-import { useGetPriceCoins } from "../../hooks/useGetCoin";
-import { useCoinSelector } from "../../store/hooks";
+import Button from "../../UI/Button";
+import { useGetPriceCoins } from "../../../hooks/useGetCoin";
+import { useCoinSelector } from "../../../store/hooks";
 
 type ChartCoinPrice = {
   price: number[];

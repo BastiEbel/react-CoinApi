@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 
 import CalcChartContainer from "./CalcChartContainer";
-import CoinContainer from "../CoinCart/CoinContainer";
+import CoinContainer from "../CoinCart/ListCoinsComponent/CoinContainer";
 import Header from "./Header";
 import LoadingIndicator from "../UI/LoadingIndicator";
 import ErrorBlock from "../UI/ErrorBlock";
