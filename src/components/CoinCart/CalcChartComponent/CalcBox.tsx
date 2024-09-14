@@ -34,6 +34,7 @@ export default function CalcBox() {
       setCalcPrice(0);
     }
   }
+
   function onClickExchangeHandler() {
     if (amount === 1) {
       setCalcPrice(selectInfo.price || 0);
@@ -45,7 +46,7 @@ export default function CalcBox() {
   }
 
   return (
-    <div className="w-96 h-96 mx-8 flex flex-col items-center justify-evenly glass ">
+    <div className="w-96 h-96 ml-8 mr-6 flex flex-col items-center justify-evenly glass ">
       <span className="text-2xl w-3/4 bg-gradient-to-r from-gray-300 to-gray-800 text-transparent bg-clip-text">
         Exchange
       </span>

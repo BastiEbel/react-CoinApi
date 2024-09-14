@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from "react";
 
-import CalcChartContainer from "./CalcChartContainer";
+import CalcChartContainer from "./Section/CalcChartContainer";
 import CoinContainer from "../CoinCart/ListCoinsComponent/CoinContainer";
-import Header from "./Header";
+import Header from "./Section/Header";
 import LoadingIndicator from "../UI/LoadingIndicator";
 import ErrorBlock from "../UI/ErrorBlock";
 import { useGetCoins } from "../../hooks/useGetCoin";
-import OverviewContainer from "./OverviewContainer";
+import OverviewContainer from "./Section/OverviewContainer";
 import { selectedChartData } from "../../store/coin-slice";
 import { useCoinDispatch } from "../../store/hooks";
 

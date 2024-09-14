@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import CoinCard from "../../Layout/CoinCard";
+import CoinCard from "../../Layout/Section/CoinCard";
 import { settings } from "../../../util/constantOptions";
 import { CoinData, useGetCoins } from "../../../hooks/useGetCoin";
 import { useCoinDispatch } from "../../../store/hooks";
@@ -56,7 +56,7 @@ function CoinContainer() {
   }
 
   return (
-    <div className="w-11/12 m-auto h-52 slider-bg">
+    <div className="w-11/12 m-auto slider-bg">
       <div className="mb-5">
         <Slider {...settings}>{content}</Slider>
       </div>

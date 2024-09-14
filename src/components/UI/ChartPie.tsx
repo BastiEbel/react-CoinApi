@@ -49,7 +49,7 @@ export default function ChartPie({ data }: ChartUIProps) {
         responsive: true,
         plugins: { legend: { display: true, position: "left" } },
       }}
-      style={{ height: "8rem", paddingLeft: "1rem" }}
+      style={{ height: "6rem", width: "100%", paddingLeft: "1rem" }}
     />
   );
 }

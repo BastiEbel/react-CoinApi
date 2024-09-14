@@ -3,6 +3,7 @@ import { useGetCoins } from "../../../hooks/useGetCoin";
 import { ChartData, Point } from "chart.js";
 import ChartPie from "../../UI/ChartPie";
 import { formatterPrices } from "../../../util/formatter";
+import SelectDifferentValue from "./SelectDifferentValue";
 
 interface HighestChange {
   symbol: string;
@@ -59,11 +60,11 @@ export default function HighestCoinChart() {
   return (
     <>
       {highestChanges && highestChanges.length > 0 ? (
-        <div className="flex mx-8">
+        <div className="flex ml-4 mr-8">
           <div>
             <ChartPie data={dataset} />
           </div>
-          <ul className="ml-8 flex items-start justify-around flex-col">
+          <ul className="m-8 flex items-start justify-around flex-col">
             {highestChanges.map((highestItem) => (
               <li
                 className="text-gray-400 flex items-center justify-between w-32 text-lg"
@@ -76,6 +77,7 @@ export default function HighestCoinChart() {
               </li>
             ))}
           </ul>
+          <SelectDifferentValue />
         </div>
       ) : (
         <div>No data available</div>
