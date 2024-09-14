@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useGetCoins } from "../../hooks/useGetCoin";
+import { useGetCoins } from "../../../hooks/useGetCoin";
 import { ChartData, Point } from "chart.js";
-import ChartPie from "../UI/ChartPie";
-import { formatterPrices } from "../../util/formatter";
+import ChartPie from "../../UI/ChartPie";
+import { formatterPrices } from "../../../util/formatter";
 
 interface HighestChange {
   symbol: string;
@@ -46,7 +46,7 @@ export default function HighestCoinChart() {
         datasets: [
           {
             label: "Highest Changes",
-            backgroundColor: ["#2FBDC2", "#EE5CA0", "#F8B143"],
+            backgroundColor: ["#B48CFF", "#8D8CFF", "#8CD3FF"],
             data:
               highestChanges?.map((highestItem) => highestItem.change) || [],
             borderWidth: 1,
@@ -59,12 +59,20 @@ export default function HighestCoinChart() {
   return (
     <>
       {highestChanges && highestChanges.length > 0 ? (
-        <div className="flex ml-4">
-          <ChartPie data={dataset} />
-          <ul className="ml-4 flex items-center justify-between flex-col">
+        <div className="flex mx-8">
+          <div>
+            <ChartPie data={dataset} />
+          </div>
+          <ul className="ml-8 flex items-start justify-around flex-col">
             {highestChanges.map((highestItem) => (
-              <li className="text-gray-400" key={highestItem.symbol}>
-                {highestItem.symbol}: {formatterPrices(highestItem.change)}%
+              <li
+                className="text-gray-400 flex items-center justify-between w-32 text-lg"
+                key={highestItem.symbol}
+              >
+                {highestItem.symbol}:{" "}
+                <p style={{ color: "#00dc00" }}>
+                  {formatterPrices(highestItem.change)}%
+                </p>
               </li>
             ))}
           </ul>

@@ -28,17 +28,28 @@ ChartJS.register(
 
 type ChartUIProps = {
   data: ChartData<"pie", (number | string | Point)[], unknown>;
+  //chartType: "pie";
 };
 
 export default function ChartPie({ data }: ChartUIProps) {
+  /* const chartRef = useRef(null);
+
+  useEffect(() => {
+    const chartInstance = ChartJS.getChart("pie");
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+  }, [data]); */
+
   return (
     <Pie
+      /* ref={chartRef} */
       data={data as ChartData<"pie", (number | string | Point)[], unknown>}
-      width={"5rem"}
       options={{
         responsive: true,
-        plugins: { legend: { display: false } },
+        plugins: { legend: { display: true, position: "left" } },
       }}
+      style={{ height: "8rem", paddingLeft: "1rem" }}
     />
   );
 }

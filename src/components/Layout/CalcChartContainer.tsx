@@ -1,5 +1,5 @@
-import CalcBox from "../CoinCart/CalcBox";
-import ChartBox from "../CoinCart/ChartBox";
+import CalcBox from "../CoinCart/CalcChartComponent/CalcBox";
+import ChartBox from "../CoinCart/CalcChartComponent/ChartBox";
 
 export default function CalcChartContainer() {
   return (
