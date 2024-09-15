@@ -54,7 +54,7 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
         <p className="text-gray-400 text-lg">Price:</p>
         <p
           style={{
-            color: color,
+            color: "#00dc00",
             fontSize: "1.125rem",
           }}
         >

@@ -36,7 +36,7 @@ export default function SelectedCoinData() {
   const { low_24h = 0, high_24h = 0 } = item || {};
 
   return (
-    <div className=" mx-8 flex flex-col items-center">
+    <div className=" mx-8 flex flex-col items-center justify-around">
       <div className=" w-full px-4 py-2 flex justify-between items-center">
         <p className="text-gray-500 text-lg">Balance</p>
         <p
@@ -52,7 +52,7 @@ export default function SelectedCoinData() {
         <div className="flex">
           <p
             style={{
-              color: color,
+              color: "#00dc00",
               fontSize: "1.125rem",
               marginRight: "8px",
             }}
