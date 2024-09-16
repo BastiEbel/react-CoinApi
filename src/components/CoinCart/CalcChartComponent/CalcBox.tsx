@@ -52,7 +52,7 @@ export default function CalcBox() {
       </span>
       <div className="w-full flex flex-col items-center ">
         <p className="w-3/4 flex justify-start mb-2 text-gray-300">Amount:</p>
-        <div className="mx-8 bg-gradient-to-r from-stone-500 to-stone-700 border rounded-2xl flex justify-evenly items-center">
+        <div className="mx-8 bg-gradient-to-r from-stone-500 to-stone-700 border border-gray-400 rounded-2xl flex justify-evenly items-center">
           <Input
             disable={false}
             value={amount.toString()}
@@ -73,7 +73,7 @@ export default function CalcBox() {
       </div>
       <div className="w-full flex flex-col items-center ">
         <p className="w-3/4 flex justify-start mb-2 text-gray-200">Price:</p>
-        <div className="mx-8 bg-gradient-to-r from-stone-500 to-stone-700 border rounded-2xl flex justify-evenly items-center">
+        <div className="mx-8 bg-gradient-to-r from-stone-500 to-stone-700 border border-gray-400 rounded-2xl flex justify-evenly items-center">
           <Input
             disable={true}
             value={formatterPrices(calcPrice)}
@@ -92,10 +92,10 @@ export default function CalcBox() {
       <Button
         disable={disable}
         onClick={onClickExchangeHandler}
-        style={`shadow shadow-lg h-10 w-52 text-gray-300 border rounded-2xl ${
+        style={`shadow shadow-lg h-10 w-52 text-gray-300 border border-gray-400 rounded-2xl ${
           !disable
             ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
-            : "bg-slate-700"
+            : "bg-slate-800"
         }`}
       >
         Exchange

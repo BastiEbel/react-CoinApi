@@ -68,7 +68,6 @@ export default function HighestCoinChart() {
               currency: "€",
               id: 2,
             }));
-
             break;
           default:
             return;
@@ -106,13 +105,14 @@ export default function HighestCoinChart() {
       {highestChanges && highestChanges.length > 0 ? (
         <div className="flex flex-col items-center ml-4 mr-8">
           <p className="my-2 bg-gradient-to-r from-gray-300 to-gray-600 text-transparent bg-clip-text">
-            Highest Changes
+            {activeButtonIndex === 2 ? "Cheapest Price" : "Highest Changes"}{" "}
+            {highestChanges[0].currency}
           </p>
           <div className="flex">
             <div>
               <ChartPie data={dataset} />
             </div>
-            <ul className="m-8 mr-12 flex items-start justify-around flex-col">
+            <ul className="m-8 flex items-start justify-around flex-col">
               {highestChanges.map((highestItem) => (
                 <li
                   className="text-gray-400 flex items-center justify-between text-lg"
@@ -120,11 +120,19 @@ export default function HighestCoinChart() {
                 >
                   {highestItem.symbol}:
                   <div
-                    style={{
-                      color: "#00dc00",
-                      marginLeft: "0.25rem",
-                      textAlign: "center",
-                    }}
+                    style={
+                      highestItem.change >= 0
+                        ? {
+                            color: "#00dc00",
+                            marginLeft: "0.25rem",
+                            textAlign: "center",
+                          }
+                        : {
+                            color: "red",
+                            marginLeft: "0.25rem",
+                            textAlign: "center",
+                          }
+                    }
                   >
                     {highestItem.id === 2
                       ? highestItem.change
@@ -143,10 +151,10 @@ export default function HighestCoinChart() {
                     setActiveButtonIndex(index); // Setze den aktiven Button-Index
                     loadSortData(index);
                   }}
-                  style={`shadow shadow-lg py-1 px-2 text-gray-300 border rounded-2xl {screen}:text-base w-44 ${
+                  style={`shadow shadow-lg py-1 px-2 text-gray-300 border border-gray-400 rounded-2xl {screen}:text-base w-44 ${
                     activeButtonIndex === index
-                      ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
-                      : "bg-slate-700 cursor-default"
+                      ? "bg-slate-900 cursor-pointer bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+                      : "bg-slate-800"
                   }`}
                 >
                   {button.name}

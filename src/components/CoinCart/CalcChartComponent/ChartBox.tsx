@@ -111,7 +111,7 @@ export default function ChartBox() {
             getDay === 1
               ? "  text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(1)}
           disable={false}
         >
@@ -122,7 +122,7 @@ export default function ChartBox() {
             getDay === 14
               ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(14)}
           disable={false}
         >
@@ -133,7 +133,7 @@ export default function ChartBox() {
             getDay === 30
               ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(30)}
           disable={false}
         >
