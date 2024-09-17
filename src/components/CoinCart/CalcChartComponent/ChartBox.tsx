@@ -82,21 +82,21 @@ export default function ChartBox() {
   switch (getDay) {
     case 1:
       showDay = (
-        <div className="text-2xl mx-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="text-base mx-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           24h {selectedInfo?.coin}
         </div>
       );
       break;
     case 14:
       showDay = (
-        <div className="text-2xl mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="text-base mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           14 Days {selectedInfo.coin}
         </div>
       );
       break;
     default:
       showDay = (
-        <div className="text-2xl mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="text-base mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           30 Days {selectedInfo.coin}
         </div>
       );
@@ -109,9 +109,9 @@ export default function ChartBox() {
         <Button
           style={`${
             getDay === 1
-              ? "  text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
+              ? "text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }text-base shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(1)}
           disable={false}
         >
@@ -120,9 +120,9 @@ export default function ChartBox() {
         <Button
           style={`${
             getDay === 14
-              ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
+              ? "text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }text-base shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(14)}
           disable={false}
         >
@@ -131,9 +131,9 @@ export default function ChartBox() {
         <Button
           style={`${
             getDay === 30
-              ? " text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
+              ? "text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }shadow shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }text-base shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(30)}
           disable={false}
         >

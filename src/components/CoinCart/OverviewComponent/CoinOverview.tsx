@@ -16,13 +16,13 @@ export default function CoinOverview() {
             key={coin.id}
             className="overflow-scroll mb-3 py-2 shadow-white drop-shadow-lg bg-slate-800 border-gray-400 border rounded-3xl flex flex-col justify-center"
           >
-            <div className="flex w-full justify-between px-8 items-center mb-2">
+            <div className="flex w-full justify-between lg:px-4 xl:px-8 items-center mb-2">
               <img className="h-8" src={coin.image} alt="Coin image" />
-              <span className="text-gray-400 text-wrap text-center">
+              <span className="text-gray-400 text-wrap text-center text-base">
                 {coin.name}
               </span>
             </div>
-            <div className="flex w-full justify-between px-8 items-center">
+            <div className="flex w-full justify-between lg:px-4 xl:px-8 items-center">
               <span className="text-base text-gray-400">Price:</span>{" "}
               <span className="text-base text-gray-400">
                 {formatterPrices(coin.current_price)} {setCurrency?.currency}

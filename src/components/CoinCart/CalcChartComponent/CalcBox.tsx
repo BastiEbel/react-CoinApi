@@ -58,7 +58,7 @@ export default function CalcBox() {
             value={amount.toString()}
             onChange={(e) => onChangeAmountHandler(e)}
             placeholder="0"
-            style="h-10 text-center text-lg bg-transparent px-2 text-gray-200 mx-2"
+            style="h-10 text-center text-base bg-transparent px-2 text-gray-200 mx-2"
             type="number"
           />
           <div className="border border-l-0 h-6"></div>
@@ -79,11 +79,11 @@ export default function CalcBox() {
             value={formatterPrices(calcPrice)}
             onChange={(e) => onChangePriceHandler(e)}
             placeholder="Coin Price"
-            style="h-10 text-center text-lg bg-transparent px-2 text-gray-300 mx-2"
+            style="h-10 text-center text-base bg-transparent px-2 text-gray-300 mx-2"
           />
           <div className="border border-l-0 h-6"></div>
           <div className="flex items-center justify-center">
-            <div className="text-gray-300 flex items-center mx-2">
+            <div className="text-gray-300 text-base flex items-center mx-2">
               {selectInfo?.currency}
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function CalcBox() {
       <Button
         disable={disable}
         onClick={onClickExchangeHandler}
-        style={`shadow shadow-lg h-10 w-52 text-gray-300 border border-gray-400 rounded-2xl ${
+        style={`shadow-lg text-base h-10 w-52 text-gray-300 border border-gray-400 rounded-2xl ${
           !disable
             ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
             : "bg-slate-800"

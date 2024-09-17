@@ -37,10 +37,10 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
           src={image}
           width={50}
         />
-        <p className="text-gray-400 text-lg">{title}</p>
+        <p className="text-gray-400 text-base">{title}</p>
       </div>
       <div className=" w-full px-4 py-2 flex justify-between items-center">
-        <p className="text-gray-400 text-lg">Price changes:</p>
+        <p className="text-gray-400 text-base">Price changes:</p>
         <p
           style={{
             color: color,
@@ -51,7 +51,7 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
         </p>
       </div>
       <div className="w-full px-4 py-2 flex justify-between items-center">
-        <p className="text-gray-400 text-lg">Price:</p>
+        <p className="text-gray-400 text-base">Price:</p>
         <p
           style={{
             color: "#00dc00",
