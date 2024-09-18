@@ -5,8 +5,10 @@ import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 
 export default function CalcBox() {
-  const selectInfo = useCoinSelector((state) => state.coin.items[0]);
-  const coinCurrency = useCoinSelector((state) => state.coin.currency);
+  const { selectInfo, coinCurrency } = useCoinSelector((state) => ({
+    selectInfo: state.coin.items[0],
+    coinCurrency: state.coin.currency,
+  }));
   const [calcPrice, setCalcPrice] = useState(selectInfo?.price || 0);
   const [amount, setAmount] = useState<number>(1);
   const [disable, setDisable] = useState<boolean>(true);

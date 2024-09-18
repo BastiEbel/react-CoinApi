@@ -15,8 +15,10 @@ export default function SelectedCoinData() {
   const [color, setColor] = useState("#00dc00");
   const [item, setItem] = useState<SelectedCoinItem>();
   const { data } = useGetCoins();
-  const selectedCoin = useCoinSelector((state) => state.coin.items[0]);
-  const coinCurrency = useCoinSelector((state) => state.coin.currency);
+  const { selectedCoin, coinCurrency } = useCoinSelector((state) => ({
+    selectedCoin: state.coin.items[0],
+    coinCurrency: state.coin.currency,
+  }));
 
   useEffect(() => {
     if (Array.isArray(data) && selectedCoin) {
