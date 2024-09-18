@@ -103,10 +103,10 @@ export default function HighestCoinChart() {
   return (
     <>
       {highestChanges && highestChanges.length > 0 ? (
-        <div className="flex flex-col items-center lg:mx-2 xl:ml-4 xl:mr-8">
-          <p className="my-2 bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
+        <div className="w-1/2 lg:w-full flex flex-col items-center lg:mx-2 xl:ml-4 xl:mr-8">
+          <p className="flex my-2 bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
             {activeButtonIndex === 2 ? "Cheapest Price" : "Highest Changes"}
-            {highestChanges[0].currency}
+            <span className="pl-2">{highestChanges[0].currency}</span>
           </p>
           <div className="flex w-full justify-between">
             <div>
@@ -142,7 +142,7 @@ export default function HighestCoinChart() {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col justify-around items-center xl:w-44 lg:w-36">
+            <div className="flex flex-col justify-around items-center xl:w-44 lg:w-40">
               {nameButtons.map((button, index) => (
                 <Button
                   key={button.id}
@@ -151,7 +151,7 @@ export default function HighestCoinChart() {
                     setActiveButtonIndex(index);
                     loadSortData(index);
                   }}
-                  style={`shadow-lg py-1 px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-sm xl:text-base w-full ${
+                  style={`shadow-lg py-1 px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-xs xl:text-base w-full ${
                     activeButtonIndex === index
                       ? "bg-slate-900 cursor-pointer bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
                       : "bg-slate-800"

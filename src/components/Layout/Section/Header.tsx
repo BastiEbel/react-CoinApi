@@ -1,6 +1,22 @@
+import { useState } from "react";
+import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 
 function Header() {
+  const [currency, setCurrency] = useState({
+    name: "EUR",
+    currency: "eur",
+    isClicked: false,
+  });
+
+  function onClickCurrencyChangeHandler() {
+    setCurrency((prevCurrency) => ({
+      name: prevCurrency.name === "EUR" ? "USD" : "EUR",
+      currency: prevCurrency.currency === "eur" ? "usd" : "eur",
+      isClicked: !prevCurrency.isClicked,
+    }));
+  }
+
   return (
     <>
       <div className="w-full h-24 flex justify-between items-center shadow-md shadow-slate-500">
@@ -14,12 +30,23 @@ function Header() {
             Coin App
           </h1>
         </div>
-        <div>
+        <div className="w-1/4 flex justify-between items-center mr-8">
           <Input
             disable={false}
             placeholder="find Coin"
             style="h-8 text-center text-base bg-transparent px-2 text-gray-300 mx-2 bg-gradient-to-r from-stone-500 to-stone-700 border border-gray-400 rounded-xl"
           />
+          <Button
+            disable={false}
+            onClick={onClickCurrencyChangeHandler}
+            style={`shadow shadow-sm ml-4 shadow-white py-1 cursor-pointer px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-sm xl:text-base w-full ${
+              currency.isClicked
+                ? "bg-slate-900 bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
+                : "bg-slate-800"
+            }`}
+          >
+            {currency.name}
+          </Button>
         </div>
       </div>
     </>
