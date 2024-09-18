@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
+import { useCoinDispatch } from "../../../store/hooks";
+import { loadCurrency } from "../../../store/coin-slice";
 
 function Header() {
   const [currency, setCurrency] = useState({
@@ -8,6 +10,11 @@ function Header() {
     currency: "eur",
     isClicked: false,
   });
+  const dispatch = useCoinDispatch();
+
+  useEffect(() => {
+    dispatch(loadCurrency(currency.name));
+  }, [currency.name, dispatch]);
 
   function onClickCurrencyChangeHandler() {
     setCurrency((prevCurrency) => ({

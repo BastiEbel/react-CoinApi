@@ -12,6 +12,7 @@ type Coin = {
 function CoinCard({ title, image, price, percent, onClick }: Coin) {
   const [color, setColor] = useState("#00dc00");
   const selectCoin = useCoinSelector((state) => state.coin.items[0]);
+  const coinCurrency = useCoinSelector((state) => state.coin.currency);
 
   useEffect(() => {
     if (percent < 0) {
@@ -58,7 +59,7 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
             fontSize: "1.125rem",
           }}
         >
-          {price.toFixed(2)} €
+          {price.toFixed(2)} <span>{coinCurrency}</span>
         </p>
       </div>
     </div>

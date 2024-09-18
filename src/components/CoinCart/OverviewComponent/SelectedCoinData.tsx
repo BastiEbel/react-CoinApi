@@ -16,6 +16,7 @@ export default function SelectedCoinData() {
   const [item, setItem] = useState<SelectedCoinItem>();
   const { data } = useGetCoins();
   const selectedCoin = useCoinSelector((state) => state.coin.items[0]);
+  const coinCurrency = useCoinSelector((state) => state.coin.currency);
 
   useEffect(() => {
     if (Array.isArray(data) && selectedCoin) {
@@ -32,7 +33,7 @@ export default function SelectedCoinData() {
     }
   }, [selectedCoin, data]);
 
-  const { percent, price, currency, coin } = selectedCoin || {};
+  const { percent, price, coin } = selectedCoin || {};
   const { low_24h = 0, high_24h = 0 } = item || {};
 
   return (
@@ -59,7 +60,9 @@ export default function SelectedCoinData() {
           >
             {formatterPrices(price)}
           </p>
-          <p style={{ color: "#6b7280", fontSize: "1.125rem" }}>{currency}</p>
+          <p style={{ color: "#6b7280", fontSize: "1.125rem" }}>
+            {coinCurrency}
+          </p>
         </div>
         <p className="text-gray-500 text-base">{coin}</p>
       </div>
@@ -73,7 +76,7 @@ export default function SelectedCoinData() {
             >
               {formatterPrices(low_24h)}
             </p>
-            <p className="text-gray-500 text-base"> {currency}</p>
+            <p className="text-gray-500 text-base"> {coinCurrency}</p>
           </div>
         </div>
         <div className="border mx-4 border-gray-500 h-12"></div>
@@ -89,7 +92,7 @@ export default function SelectedCoinData() {
             >
               {formatterPrices(high_24h)}
             </p>
-            <p className="text-gray-500 text-base">{currency}</p>
+            <p className="text-gray-500 text-base">{coinCurrency}</p>
           </div>
         </div>
       </div>

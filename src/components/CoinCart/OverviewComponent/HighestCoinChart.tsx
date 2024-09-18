@@ -4,6 +4,7 @@ import { ChartData, Point } from "chart.js";
 import ChartPie from "../../UI/ChartPie";
 import { formatterPrices } from "../../../util/formatter";
 import Button from "../../UI/Button";
+import { useCoinSelector } from "../../../store/hooks";
 
 interface HighestChange {
   symbol: string;
@@ -25,6 +26,7 @@ export default function HighestCoinChart() {
   const [highestChanges, setHighestChanges] = useState<HighestChanges | null>(
     null
   );
+  const coinCurrency = useCoinSelector((state) => state.coin.currency);
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
 
   const loadSortData = useCallback(
@@ -54,7 +56,7 @@ export default function HighestCoinChart() {
             topThree = sortedData.slice(0, 3).map((item) => ({
               symbol: item.symbol,
               change: item.price_change_24h.toFixed(2),
-              currency: "€",
+              currency: coinCurrency,
               id: 1,
             }));
             break;
@@ -65,7 +67,7 @@ export default function HighestCoinChart() {
             topThree = sortedData.slice(0, 3).map((item) => ({
               symbol: item.symbol,
               change: item.current_price,
-              currency: "€",
+              currency: coinCurrency,
               id: 2,
             }));
             break;
@@ -76,7 +78,7 @@ export default function HighestCoinChart() {
         setHighestChanges(topThree);
       }
     },
-    [data]
+    [data, coinCurrency]
   );
 
   useEffect(() => {

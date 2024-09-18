@@ -1,21 +1,20 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export type CoinItem = {
-  id: string;
-  coin: string;
-  days: number;
-  percent: number;
+export type CoinState = {
+  items: Array<{
+    id: string;
+    coin: string;
+    days: number;
+    percent: number;
+    price: number;
+    image: string;
+  }>;
   currency: string;
-  price: number;
-  image: string;
-};
-
-type CoinState = {
-  items: CoinItem[];
 };
 
 const initialState: CoinState = {
   items: [],
+  currency: "EUR",
 };
 
 export const coinSlice = createSlice({
@@ -29,25 +28,15 @@ export const coinSlice = createSlice({
         coin: string;
         id: string;
         percent: number;
-        currency: string;
         price: number;
         image: string;
       }>
     ) {
       state.items[0] = action.payload;
     },
-
-    //removeFromCart(state, action: PayloadAction<string>) {
-    /* const itemIndex = state.items.findIndex(
-          (item) => item.id === action.payload
-        );
-  
-        if (state.items[itemIndex].quantity === 1) {
-          state.items.splice(itemIndex, 1);
-        } else {
-          state.items[itemIndex].quantity--;
-        } */
-    //},
+    loadCurrency(state, action: PayloadAction<string>) {
+      state.currency = action.payload;
+    },
   },
 });
-export const { selectedChartData } = coinSlice.actions;
+export const { selectedChartData, loadCurrency } = coinSlice.actions;

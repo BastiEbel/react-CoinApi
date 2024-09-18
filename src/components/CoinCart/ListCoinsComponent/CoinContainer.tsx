@@ -29,7 +29,6 @@ function CoinContainer() {
         percent,
         price,
         image,
-        currency: "EUR",
       })
     );
   }

@@ -6,6 +6,7 @@ import Button from "../../UI/Button";
 
 export default function CalcBox() {
   const selectInfo = useCoinSelector((state) => state.coin.items[0]);
+  const coinCurrency = useCoinSelector((state) => state.coin.currency);
   const [calcPrice, setCalcPrice] = useState(selectInfo?.price || 0);
   const [amount, setAmount] = useState<number>(1);
   const [disable, setDisable] = useState<boolean>(true);
@@ -84,7 +85,7 @@ export default function CalcBox() {
           <div className="border border-l-0 h-6"></div>
           <div className="flex items-center justify-center">
             <div className="text-gray-300 text-base flex items-center mx-2">
-              {selectInfo?.currency}
+              {coinCurrency}
             </div>
           </div>
         </div>

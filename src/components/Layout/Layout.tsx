@@ -28,7 +28,6 @@ function Layout() {
           percent: getData.price_change_percentage_24h,
           price: getData.current_price,
           image: getData.image,
-          currency: "EUR",
         })
       );
     }

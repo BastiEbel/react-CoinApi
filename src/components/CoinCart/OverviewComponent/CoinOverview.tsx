@@ -4,7 +4,7 @@ import { formatterPrices } from "../../../util/formatter";
 
 export default function CoinOverview() {
   const { data } = useGetCoins();
-  const setCurrency = useCoinSelector((state) => state.coin.items[0]);
+  const setCurrency = useCoinSelector((state) => state.coin.currency);
 
   const coins = Array.isArray(data) ? data : [data];
 
@@ -27,7 +27,7 @@ export default function CoinOverview() {
                 Price:
               </span>
               <span className="lg:text-sm xl:text-base text-gray-400">
-                {formatterPrices(coin.current_price)} {setCurrency?.currency}
+                {formatterPrices(coin.current_price)} {setCurrency}
               </span>
             </div>
           </div>
