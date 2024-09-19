@@ -9,12 +9,15 @@ export type CoinState = {
     price: number;
     image: string;
   }>;
-  currency: string;
+  currency: Array<{
+    currencyName: string;
+    currencyCoin: string;
+  }>;
 };
 
 const initialState: CoinState = {
   items: [],
-  currency: "EUR",
+  currency: [],
 };
 
 export const coinSlice = createSlice({
@@ -34,8 +37,12 @@ export const coinSlice = createSlice({
     ) {
       state.items[0] = action.payload;
     },
-    loadCurrency(state, action: PayloadAction<string>) {
-      state.currency = action.payload;
+    loadCurrency(
+      state,
+      action: PayloadAction<{ currencyName: string; currencyCoin: string }>
+    ) {
+      state.currency[0] = action.payload;
+      console.log(state.currency[0]);
     },
   },
 });

@@ -23,41 +23,50 @@ export type PropsType = {
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // default: true
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
     },
   },
 });
 
 export function useGetCoins() {
-  const currency: string = "eur";
-  const url: string = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&page=1&per_page=49&order=market_cap_desc`;
+  const currency = useCoinSelector((state) => state.coin.currency[0]);
 
+  const queryKey = ["allCoins", currency?.currencyCoin];
   return useQuery({
-    queryKey: ["allCoins"],
+    queryKey,
+    enabled: !!currency?.currencyCoin,
     queryFn: async () => {
-      const { data } = await axios.get(url);
+      const baseUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${
+        currency.currencyCoin || "eur"
+      }&page=1&per_page=49&order=market_cap_desc`;
+      const { data } = await axios.get(baseUrl);
       return data as CoinData;
     },
   });
 }
 
 export function useGetPriceCoins(getDay: number) {
-  const currency: string = "eur";
   const selectedInfo = useCoinSelector((state) => state.coin.items[0]);
+  const coinCurrency = useCoinSelector((state) => state.coin.currency[0]);
 
-  const queryKey = ["priceCoin", getDay, selectedInfo?.id];
+  const queryKey = [
+    "priceCoin",
+    getDay,
+    selectedInfo?.id,
+    coinCurrency?.currencyCoin,
+  ];
 
   return useQuery({
     queryKey,
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 30,
     enabled: getDay !== undefined && selectedInfo?.id !== undefined,
     queryFn: async () => {
       const baseUrl = `https://api.coingecko.com/api/v3/coins/${
         selectedInfo?.id || "bitcoin"
       }/market_chart`;
       const params = new URLSearchParams({
-        vs_currency: currency,
+        vs_currency: coinCurrency.currencyCoin || "eur",
         days: getDay.toString(),
         ...(getDay !== 1 && { interval: "daily" }),
       });

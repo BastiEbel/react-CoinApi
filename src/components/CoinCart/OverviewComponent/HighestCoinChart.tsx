@@ -26,7 +26,7 @@ export default function HighestCoinChart() {
   const [highestChanges, setHighestChanges] = useState<HighestChanges | null>(
     null
   );
-  const coinCurrency = useCoinSelector((state) => state.coin.currency);
+  const coinCurrency = useCoinSelector((state) => state.coin.currency[0]);
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
 
   const loadSortData = useCallback(
@@ -56,7 +56,7 @@ export default function HighestCoinChart() {
             topThree = sortedData.slice(0, 3).map((item) => ({
               symbol: item.symbol,
               change: item.price_change_24h.toFixed(2),
-              currency: coinCurrency,
+              currency: coinCurrency.currencyName,
               id: 1,
             }));
             break;
@@ -67,7 +67,7 @@ export default function HighestCoinChart() {
             topThree = sortedData.slice(0, 3).map((item) => ({
               symbol: item.symbol,
               change: item.current_price,
-              currency: coinCurrency,
+              currency: coinCurrency.currencyName,
               id: 2,
             }));
             break;
@@ -78,7 +78,7 @@ export default function HighestCoinChart() {
         setHighestChanges(topThree);
       }
     },
-    [data, coinCurrency]
+    [data, coinCurrency.currencyName]
   );
 
   useEffect(() => {

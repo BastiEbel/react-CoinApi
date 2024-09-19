@@ -35,7 +35,6 @@ function Layout() {
 
   useEffect(() => {
     if (!isLoading && !isError) {
-      // Only fetch data if not loading or error
       fetchCoinData();
     }
   }, [fetchCoinData, isLoading, isError]);

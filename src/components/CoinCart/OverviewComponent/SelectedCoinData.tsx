@@ -15,10 +15,8 @@ export default function SelectedCoinData() {
   const [color, setColor] = useState("#00dc00");
   const [item, setItem] = useState<SelectedCoinItem>();
   const { data } = useGetCoins();
-  const { selectedCoin, coinCurrency } = useCoinSelector((state) => ({
-    selectedCoin: state.coin.items[0],
-    coinCurrency: state.coin.currency,
-  }));
+  const selectedCoin = useCoinSelector((state) => state.coin.items[0]);
+  const coinCurrency = useCoinSelector((state) => state.coin.currency[0]);
 
   useEffect(() => {
     if (Array.isArray(data) && selectedCoin) {
@@ -33,7 +31,7 @@ export default function SelectedCoinData() {
         setColor("#00dc00");
       }
     }
-  }, [selectedCoin, data]);
+  }, [selectedCoin, data, coinCurrency.currencyName]);
 
   const { percent, price, coin } = selectedCoin || {};
   const { low_24h = 0, high_24h = 0 } = item || {};
@@ -63,7 +61,7 @@ export default function SelectedCoinData() {
             {formatterPrices(price)}
           </p>
           <p style={{ color: "#6b7280", fontSize: "1.125rem" }}>
-            {coinCurrency}
+            {coinCurrency?.currencyName}
           </p>
         </div>
         <p className="text-gray-500 text-base">{coin}</p>
@@ -78,7 +76,10 @@ export default function SelectedCoinData() {
             >
               {formatterPrices(low_24h)}
             </p>
-            <p className="text-gray-500 text-base"> {coinCurrency}</p>
+            <p className="text-gray-500 text-base">
+              {" "}
+              {coinCurrency?.currencyName}
+            </p>
           </div>
         </div>
         <div className="border mx-4 border-gray-500 h-12"></div>
@@ -94,7 +95,9 @@ export default function SelectedCoinData() {
             >
               {formatterPrices(high_24h)}
             </p>
-            <p className="text-gray-500 text-base">{coinCurrency}</p>
+            <p className="text-gray-500 text-base">
+              {coinCurrency?.currencyName}
+            </p>
           </div>
         </div>
       </div>

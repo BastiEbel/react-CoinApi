@@ -5,23 +5,20 @@ import { useCoinDispatch } from "../../../store/hooks";
 import { loadCurrency } from "../../../store/coin-slice";
 
 function Header() {
-  const [currency, setCurrency] = useState({
-    name: "EUR",
-    currency: "eur",
-    isClicked: false,
-  });
+  const [currency, setCurrency] = useState(false);
   const dispatch = useCoinDispatch();
 
   useEffect(() => {
-    dispatch(loadCurrency(currency.name));
-  }, [currency.name, dispatch]);
+    dispatch(
+      loadCurrency({
+        currencyCoin: currency === true ? "usd" : "eur",
+        currencyName: currency === true ? "USD" : "EUR",
+      })
+    );
+  }, [currency, dispatch]);
 
   function onClickCurrencyChangeHandler() {
-    setCurrency((prevCurrency) => ({
-      name: prevCurrency.name === "EUR" ? "USD" : "EUR",
-      currency: prevCurrency.currency === "eur" ? "usd" : "eur",
-      isClicked: !prevCurrency.isClicked,
-    }));
+    setCurrency(!currency);
   }
 
   return (
@@ -47,12 +44,12 @@ function Header() {
             disable={false}
             onClick={onClickCurrencyChangeHandler}
             style={`shadow shadow-sm ml-4 shadow-white py-1 cursor-pointer px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-sm xl:text-base w-full ${
-              currency.isClicked
+              currency
                 ? "bg-slate-900 bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
                 : "bg-slate-800"
             }`}
           >
-            {currency.name}
+            {currency === true ? "USD" : "EUR"}
           </Button>
         </div>
       </div>
