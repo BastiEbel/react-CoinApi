@@ -9,12 +9,12 @@ export default function CoinOverview() {
   const coins = Array.isArray(data) ? data : [data];
 
   return (
-    <div className="overflow-scroll h-64 lg:p-2 xl:p-4">
+    <div className="overflow-auto hover:overflow-y-scroll h-64 lg:p-2 xl:p-4">
       {coins && coins.length > 0 ? (
         coins.map((coin) => (
           <div
             key={coin!.id}
-            className="overflow-scroll mb-3 py-2 shadow shadow-white drop-shadow-lg bg-slate-800 border-gray-400 border rounded-3xl flex flex-col justify-center"
+            className="mb-3 py-2 shadow shadow-white drop-shadow-lg bg-slate-800 border-gray-400 border rounded-3xl flex flex-col justify-center"
           >
             <div className="flex w-full justify-between lg:px-4 xl:px-8 items-center mb-2">
               <img className="h-8" src={coin?.image} alt="Coin image" />

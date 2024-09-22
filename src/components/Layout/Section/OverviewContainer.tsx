@@ -10,7 +10,7 @@ export default function OverviewContainer() {
         <div className="border border-gray-500 min-h-52"></div>
         <HighestCoinChart />
       </div>
-      <div className="mr-8 w-1/4 mt-6 glass flex-col items-center">
+      <div className="scroll-bar mr-8 w-1/4 mt-6 glass flex-col items-center">
         <CoinOverview />
       </div>
     </div>
