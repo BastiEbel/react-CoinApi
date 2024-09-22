@@ -34,7 +34,7 @@ function Header() {
             Coin App
           </h1>
         </div>
-        <div className="w-1/4 flex justify-between items-center mr-8">
+        <div className="flex justify-between items-center mr-8">
           <Input
             disable={false}
             placeholder="find Coin"
@@ -43,7 +43,7 @@ function Header() {
           <Button
             disable={false}
             onClick={onClickCurrencyChangeHandler}
-            style={`shadow shadow-sm ml-4 shadow-white py-1 cursor-pointer px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-sm xl:text-base w-full ${
+            style={`shadow shadow-sm ml-4 shadow-white py-1 cursor-pointer px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-sm xl:text-base min-w-24 ${
               currency
                 ? "bg-slate-900 bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
                 : "bg-slate-800"

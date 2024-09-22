@@ -42,7 +42,6 @@ export const coinSlice = createSlice({
       action: PayloadAction<{ currencyName: string; currencyCoin: string }>
     ) {
       state.currency[0] = action.payload;
-      console.log(state.currency[0]);
     },
   },
 });
