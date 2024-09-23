@@ -25,19 +25,18 @@ ChartJS.register(
 
 type ChartUIProps = {
   data: ChartData<"line", (number | Point)[], unknown>;
-  //chartType: "line";
 };
 
 export default function ChartLine({ data }: ChartUIProps) {
   return (
     <Line
-      data={data as ChartData<"line", (number | Point)[], unknown>} // Type assertion for line chart
+      data={data as ChartData<"line", (number | Point)[], unknown>}
       options={{
         maintainAspectRatio: false,
         responsive: true,
         plugins: { legend: { display: false } },
       }}
-      style={{ height: "20rem", width: "100%" }}
+      style={{ height: "auto", width: "100%" }}
     />
   );
 }

@@ -27,9 +27,9 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
       onClick={onClick}
       className={`${
         selectCoin?.coin === title ? "selectCoin" : "glass"
-      } hover:bg-gradient-to-r from-teal-800 to-teal-950 transition duration-300 w-auto border-white mx-3 rounded-lg flex flex-col justify-center cursor-pointer`}
+      } hover:bg-gradient-to-r from-teal-800 to-teal-950 transition duration-300 border-white mx-3 rounded-lg p-4 cursor-pointer grid grid-cols-1 gap-2`}
     >
-      <div className="w-full p-4 flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <img
           className="text-gray-400"
           alt="Logo"
@@ -39,9 +39,11 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
         />
         <p className="text-gray-400 text-base">{title}</p>
       </div>
-      <div className=" w-full px-4 py-2 flex justify-between items-center">
+
+      <div className="grid grid-cols-2 items-center">
         <p className="text-gray-400 text-base">Price changes:</p>
         <p
+          className="text-right"
           style={{
             color: color,
             fontSize: "1.125rem",
@@ -50,9 +52,11 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
           {percent.toFixed(2)} %
         </p>
       </div>
-      <div className="w-full px-4 py-2 flex justify-between items-center">
+
+      <div className="grid grid-cols-2 items-center">
         <p className="text-gray-400 text-base">Price:</p>
         <p
+          className="text-right"
           style={{
             color: "#00dc00",
             fontSize: "1.125rem",

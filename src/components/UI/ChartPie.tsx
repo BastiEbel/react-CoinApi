@@ -13,7 +13,6 @@ import {
   Filler,
   Point,
 } from "chart.js";
-//import { useEffect, useRef } from "react";
 ChartJS.register(
   Title,
   Tooltip,
@@ -28,9 +27,13 @@ ChartJS.register(
 
 type ChartUIProps = {
   data: ChartData<"pie", (number | string | Point)[], unknown>;
+  width: string;
+  height: string;
 };
 
-export default function ChartPie({ data }: ChartUIProps) {
+export default function ChartPie({ data, width, height }: ChartUIProps) {
+  console.log(height, width);
+
   return (
     <Pie
       data={data as ChartData<"pie", (number | string | Point)[], unknown>}
@@ -38,7 +41,7 @@ export default function ChartPie({ data }: ChartUIProps) {
         responsive: true,
         plugins: { legend: { display: true, position: "left" } },
       }}
-      style={{ height: "6rem", width: "100%", paddingLeft: "1rem" }}
+      style={{ height: height, width: width }}
     />
   );
 }

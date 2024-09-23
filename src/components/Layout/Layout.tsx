@@ -1,14 +1,17 @@
 import { useCallback, useEffect } from "react";
 
-import CalcChartContainer from "./Section/CalcChartContainer";
 import CoinContainer from "../CoinCart/ListCoinsComponent/CoinContainer";
 import Header from "./Section/Header";
 import LoadingIndicator from "../UI/LoadingIndicator";
 import ErrorBlock from "../UI/ErrorBlock";
 import { useGetCoins } from "../../hooks/useGetCoin";
-import OverviewContainer from "./Section/OverviewContainer";
 import { selectedChartData } from "../../store/coin-slice";
 import { useCoinDispatch } from "../../store/hooks";
+import SelectedCoinData from "../CoinCart/OverviewComponent/SelectedCoinData";
+import HighestCoinChart from "../CoinCart/OverviewComponent/HighestCoinChart";
+import CoinOverview from "../CoinCart/OverviewComponent/CoinOverview";
+import CalcBox from "../CoinCart/CalcChartComponent/CalcBox";
+import ChartBox from "../CoinCart/CalcChartComponent/ChartBox";
 
 function Layout() {
   const { data, isError, isLoading } = useGetCoins();
@@ -61,8 +64,16 @@ function Layout() {
   if (data) {
     content = (
       <>
-        <OverviewContainer />
-        <CalcChartContainer />
+        <div className="grid lg:grid-cols-4 xl:grid-cols-6">
+          <div className="col-span-4 lg:h-72 xl:mx-8 my-6 glass flex items-center justify-around">
+            <SelectedCoinData />
+            <div className="border border-gray-500 min-h-52"></div>
+            <HighestCoinChart />
+          </div>
+          <CoinOverview />
+          <CalcBox />
+          <ChartBox />
+        </div>
         <CoinContainer />
       </>
     );
