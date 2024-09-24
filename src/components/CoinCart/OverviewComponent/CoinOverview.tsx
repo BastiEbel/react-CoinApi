@@ -9,7 +9,7 @@ export default function CoinOverview() {
   const coins = Array.isArray(data) ? data : [data];
 
   return (
-    <div className="col-span-2 scroll-bar xl:mr-8 lg:mr-3 lg:mb-6 xl:my-6 glass flex flex-col items-center">
+    <div className="col-span-3 md:col-span-1 lg:col-span-2 scroll-bar xl:mr-8 mx-2 md:mr-3 mb-6 xl:my-6 glass flex flex-col items-center">
       <div className="overflow-auto lg:h-72 hover:overflow-y-scroll h-64 p-4">
         {coins && coins.length > 0 ? (
           coins.map((coin) => (
@@ -19,13 +19,15 @@ export default function CoinOverview() {
             >
               <div className="flex w-full justify-between px-8 items-center mb-2">
                 <img className="h-8" src={coin?.image} alt="Coin image" />
-                <span className="text-base text-gray-400 text-wrap text-center">
+                <span className="text-sm 2xl:text-base text-gray-400 text-wrap text-center">
                   {coin?.name}
                 </span>
               </div>
               <div className="flex w-full justify-between px-8 items-center">
-                <span className="text-base text-gray-400">Price:</span>
-                <span className="text-base text-gray-400">
+                <span className="text-sm 2xl:text-base text-gray-400">
+                  Price:
+                </span>
+                <span className="text-sm 2xl:text-base text-gray-400">
                   {formatterPrices(coin?.current_price)}{" "}
                   {setCurrency?.currencyName}
                 </span>

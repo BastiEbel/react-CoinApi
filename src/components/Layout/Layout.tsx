@@ -64,10 +64,10 @@ function Layout() {
   if (data) {
     content = (
       <>
-        <div className="grid lg:grid-cols-4 xl:grid-cols-6">
-          <div className="col-span-4 lg:h-72 xl:mx-8 my-6 glass flex items-center justify-around">
+        <div className="grid grid-flow-row w-full md:grid-col-3 lg:grid-cols-4 xl:grid-cols-6">
+          <div className="col-span-3 lg:col-span-4 md:h-72 mx-2 xl:mx-8 my-6 glass md:flex md:items-center md:justify-around">
             <SelectedCoinData />
-            <div className="border border-gray-500 min-h-52"></div>
+            <div className="border border-gray-500 w-full md:w-0 mt-4 md:min-h-52"></div>
             <HighestCoinChart />
           </div>
           <CoinOverview />

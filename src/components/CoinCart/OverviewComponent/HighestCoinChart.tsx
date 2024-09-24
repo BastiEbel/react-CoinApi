@@ -105,19 +105,19 @@ export default function HighestCoinChart() {
   return (
     <>
       {highestChanges && highestChanges.length > 0 ? (
-        <div className="w-full flex flex-col items-center ml-4 lg:mr-4 2xl:mr-8">
+        <div className="w-full flex flex-col items-center md:ml-4 lg:mr-4 2xl:mr-8">
           <p className="flex my-2 bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
             {activeButtonIndex === 2 ? "Cheapest Price" : "Highest Changes"}
             <span className="pl-2">{highestChanges[0].currency}</span>
           </p>
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-around md:justify-between">
             <div>
               <ChartPie width="100%" height="6rem" data={dataset} />
             </div>
             <ul className="lg:m-4 2xl:m-8 flex items-start justify-around flex-col">
               {highestChanges.map((highestItem) => (
                 <li
-                  className="text-gray-400 flex items-center justify-between lg:text-sm 2xl:text-base"
+                  className="text-gray-400 flex items-center justify-between text-sm 2xl:text-base"
                   key={highestItem.symbol}
                 >
                   {highestItem.symbol}:
@@ -144,7 +144,7 @@ export default function HighestCoinChart() {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col justify-around items-center lg:w-38 2xl:w-44">
+            <div className="flex flex-col justify-around items-center pr-2 w-38 2xl:w-44">
               {nameButtons.map((button, index) => (
                 <Button
                   key={button.id}
@@ -153,7 +153,7 @@ export default function HighestCoinChart() {
                     setActiveButtonIndex(index);
                     loadSortData(index);
                   }}
-                  style={`shadow-lg py-1 px-2 text-gray-300 border border-gray-400 rounded-2xl lg:text-sm 2xl:text-base w-full ${
+                  style={`shadow-lg py-1 px-2 text-gray-300 border border-gray-400 rounded-2xl text-sm 2xl:text-base w-full ${
                     activeButtonIndex === index
                       ? "bg-slate-900 cursor-pointer bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
                       : "bg-slate-800"

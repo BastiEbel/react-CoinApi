@@ -37,11 +37,15 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
           src={image}
           width={50}
         />
-        <p className="text-gray-400 text-base">{title}</p>
+        <p className="text-gray-400 text-sm lg:text-lg 2xl:text-base">
+          {title}
+        </p>
       </div>
 
       <div className="grid grid-cols-2 items-center">
-        <p className="text-gray-400 text-base">Price changes:</p>
+        <p className="text-gray-400 text-sm lg:text-lg 2xl:text-base">
+          Price changes:
+        </p>
         <p
           className="text-right"
           style={{
@@ -54,7 +58,7 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
       </div>
 
       <div className="grid grid-cols-2 items-center">
-        <p className="text-gray-400 text-base">Price:</p>
+        <p className="text-gray-400 text-sm lg:text-lg 2xl:text-base">Price:</p>
         <p
           className="text-right"
           style={{

@@ -47,13 +47,13 @@ export default function CalcBox() {
   }
 
   return (
-    <div className="col-span-2 lg:ml-3 lg:mb-6 xl:ml-8 glass ">
-      <div className="lg:h-72 xl:h-96 flex flex-col items-center justify-evenly">
-        <span className="lg:text-xl xl:text-2xl w-3/4 lg:my-4 bg-gradient-to-r from-gray-300 to-gray-800 text-transparent bg-clip-text">
+    <div className="col-span-3 md:col-span-2 lg:col-span-2 mx-2 md:ml-3 mb-6 xl:ml-8 glass ">
+      <div className="h-72 xl:h-96 flex flex-col items-center justify-evenly">
+        <span className="text-xl xl:text-2xl w-3/4 lg:my-4 bg-gradient-to-r from-gray-300 to-gray-800 text-transparent bg-clip-text">
           Exchange
         </span>
         <div className="w-full flex flex-col items-center ">
-          <label className="w-3/4 lg:text-sm 2xl:text-base flex justify-start mb-2 text-gray-300">
+          <label className="w-3/4 text-sm 2xl:text-base flex justify-start mb-2 text-gray-300">
             Amount:
           </label>
           <div className="w-2/3 mx-8 bg-gradient-to-r from-stone-500 to-stone-700 border border-gray-400 rounded-2xl flex justify-evenly items-center">
@@ -62,13 +62,13 @@ export default function CalcBox() {
               value={amount.toString()}
               onChange={(e) => onChangeAmountHandler(e)}
               placeholder="0"
-              style="lg:h-8 xl:h-10 text-center w-1/2 lg:text-sm 2xl:text-base bg-transparent px-2 text-gray-200 mx-2"
+              style="h-10 md:h-8 xl:h-10 w-3/4 text-center w-1/2 text-sm 2xl:text-base bg-transparent px-2 text-gray-200 mx-2"
               type="number"
             />
-            <div className="border border-l-0 lg:h-4 xl:h-6"></div>
-            <div className=" flex items-center justify-center">
+            <div className="border border-l-0 h-4 xl:h-6"></div>
+            <div className="w-1/4 flex items-center justify-center">
               <img
-                className="h-4 xl:h-8 mx-2 "
+                className="h-6 md:h-4 xl:h-8 mx-2 "
                 src={selectInfo?.image}
                 alt="Coin Picture"
               />
@@ -76,7 +76,7 @@ export default function CalcBox() {
           </div>
         </div>
         <div className="w-full flex flex-col items-center ">
-          <label className="w-3/4 flex lg:text-sm 2xl:text-base justify-start mb-2 text-gray-200">
+          <label className="w-3/4 flex text-sm 2xl:text-base justify-start mb-2 text-gray-200">
             Price:
           </label>
           <div className="w-2/3 mx-8 bg-gradient-to-r from-stone-500 to-stone-700 border border-gray-400 rounded-2xl flex justify-evenly items-center">
@@ -85,11 +85,11 @@ export default function CalcBox() {
               value={formatterPrices(calcPrice)}
               onChange={(e) => onChangePriceHandler(e)}
               placeholder="Coin Price"
-              style="lg:h-8 xl:h-10 text-center lg:text-sm 2xl:text-base bg-transparent px-2 text-gray-300 mx-2"
+              style="h-10 md:h-8 xl:h-10 w-3/4 text-center text-sm 2xl:text-base bg-transparent px-2 text-gray-300 mx-2"
             />
-            <div className="border border-l-0 lg:h-4 xl:h-6"></div>
-            <div className="flex items-center justify-center">
-              <div className="text-gray-300 lg:text-sm 2xl:text-base flex items-center mx-2">
+            <div className="border border-l-0 h-4 xl:h-6"></div>
+            <div className="w-1/4 flex items-center justify-center">
+              <div className="text-gray-300 text-sm 2xl:text-base flex items-center mx-2">
                 {coinCurrency?.currencyName}
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function CalcBox() {
         <Button
           disable={disable}
           onClick={onClickExchangeHandler}
-          style={`shadow-lg lg:text-sm 2xl:text-base lg:h-8 xl:h-10 lg:my-4 xl:mt-8 w-52 text-gray-300 border border-gray-400 rounded-2xl ${
+          style={`shadow-lg lg:text-sm 2xl:text-base h-10 md:h-8 xl:h-10 my-4 xl:mt-8 w-52 text-gray-300 border border-gray-400 rounded-2xl ${
             !disable
               ? "bg-slate-900 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300"
               : "bg-slate-800"
