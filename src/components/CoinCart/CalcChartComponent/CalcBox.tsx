@@ -60,7 +60,7 @@ export default function CalcBox() {
             <Input
               disable={false}
               value={amount.toString()}
-              onChange={(e) => onChangeAmountHandler(e)}
+              onChange={onChangeAmountHandler}
               placeholder="0"
               style="h-10 md:h-8 xl:h-10 w-3/4 text-center w-1/2 text-sm 2xl:text-base bg-transparent px-2 text-gray-200 mx-2"
               type="number"
@@ -83,7 +83,7 @@ export default function CalcBox() {
             <Input
               disable={true}
               value={formatterPrices(calcPrice)}
-              onChange={(e) => onChangePriceHandler(e)}
+              onChange={onChangePriceHandler}
               placeholder="Coin Price"
               style="h-10 md:h-8 xl:h-10 w-3/4 text-center text-sm 2xl:text-base bg-transparent px-2 text-gray-300 mx-2"
             />
