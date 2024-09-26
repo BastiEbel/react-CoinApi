@@ -32,8 +32,6 @@ type ChartUIProps = {
 };
 
 export default function ChartPie({ data, width, height }: ChartUIProps) {
-  console.log(height, width);
-
   return (
     <Pie
       data={data as ChartData<"pie", (number | string | Point)[], unknown>}

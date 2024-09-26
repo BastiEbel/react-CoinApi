@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { useCoinDispatch } from "../../../store/hooks";
-import { loadCurrency } from "../../../store/coin-slice";
+import { loadCurrency, selectSearchTerm } from "../../../store/coin-slice";
 
 function Header() {
   const [currency, setCurrency] = useState(false);
@@ -21,6 +21,10 @@ function Header() {
     setCurrency(!currency);
   }
 
+  function onChangeSearchHandler(event: ChangeEvent<HTMLInputElement>) {
+    dispatch(selectSearchTerm(event.target.value));
+  }
+
   return (
     <>
       <div className="w-full py-4 flex justify-between items-center shadow-md shadow-slate-500">
@@ -36,7 +40,9 @@ function Header() {
         </div>
         <div className="flex flex-col sm:flex-row justify-between items-center mr-2 sm:mr-8">
           <Input
+            onChange={onChangeSearchHandler}
             disable={false}
+            type="text"
             placeholder="find Coin"
             style="h-6 sm:h-8 text-center text-base bg-transparent px-0 md:px-2 text-gray-300 mx-2 bg-gradient-to-r from-stone-500 to-stone-700 border border-gray-400 rounded-xl"
           />
@@ -49,7 +55,7 @@ function Header() {
                 : "bg-slate-800"
             }`}
           >
-            {currency === true ? "USD" : "EUR"}
+            {currency ? "USD" : "EUR"}
           </Button>
         </div>
       </div>

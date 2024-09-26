@@ -13,11 +13,13 @@ export type CoinState = {
     currencyName: string;
     currencyCoin: string;
   }>;
+  searchFilter: string;
 };
 
 const initialState: CoinState = {
   items: [],
   currency: [],
+  searchFilter: "",
 };
 
 export const coinSlice = createSlice({
@@ -43,6 +45,10 @@ export const coinSlice = createSlice({
     ) {
       state.currency[0] = action.payload;
     },
+    selectSearchTerm(state, action: PayloadAction<string>) {
+      state.searchFilter = action.payload;
+    },
   },
 });
-export const { selectedChartData, loadCurrency } = coinSlice.actions;
+export const { selectedChartData, loadCurrency, selectSearchTerm } =
+  coinSlice.actions;

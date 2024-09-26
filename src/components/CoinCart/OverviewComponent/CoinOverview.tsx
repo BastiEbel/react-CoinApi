@@ -5,12 +5,17 @@ import { formatterPrices } from "../../../util/formatter";
 export default function CoinOverview() {
   const { data } = useGetCoins();
   const setCurrency = useCoinSelector((state) => state.coin.currency[0]);
+  const searchTerm = useCoinSelector((state) => state.coin.searchFilter);
 
-  const coins = Array.isArray(data) ? data : [data];
+  const coins = Array.isArray(data)
+    ? data.filter((coin) =>
+        coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
 
   return (
     <div className="col-span-3 md:col-span-1 lg:col-span-2 scroll-bar xl:mr-8 mx-2 md:mr-3 mb-6 xl:my-6 glass flex flex-col items-center">
-      <div className="overflow-auto lg:h-72 hover:overflow-y-scroll h-64 p-4">
+      <div className="overflow-auto w-full lg:h-72 hover:overflow-y-scroll h-64 p-4">
         {coins && coins.length > 0 ? (
           coins.map((coin) => (
             <div
@@ -18,7 +23,7 @@ export default function CoinOverview() {
               className="mb-3 py-2 shadow shadow-white drop-shadow-lg bg-slate-800 border-gray-400 border rounded-3xl flex flex-col justify-center"
             >
               <div className="flex w-full justify-between px-8 items-center mb-2">
-                <img className="h-8" src={coin?.image} alt="Coin image" />
+                <img className="h-8" src={coin!.image} alt="Coin image" />
                 <span className="text-sm 2xl:text-base text-gray-400 text-wrap text-center">
                   {coin?.name}
                 </span>
@@ -28,8 +33,8 @@ export default function CoinOverview() {
                   Price:
                 </span>
                 <span className="text-sm 2xl:text-base text-gray-400">
-                  {formatterPrices(coin?.current_price)}{" "}
-                  {setCurrency?.currencyName}
+                  {formatterPrices(coin!.current_price)}
+                  {setCurrency!.currencyName}
                 </span>
               </div>
             </div>
