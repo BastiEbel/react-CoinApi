@@ -44,7 +44,7 @@ function Layout() {
 
   if (isLoading) {
     content = (
-      <div className="h-screen flex justify-center items-center">
+      <div className="mt-80 flex justify-center items-center">
         <LoadingIndicator />
       </div>
     );
@@ -52,7 +52,7 @@ function Layout() {
 
   if (isError) {
     content = (
-      <div className="h-screen flex justify-center items-center">
+      <div className="mt-80 flex justify-center items-center">
         <ErrorBlock
           title="An Error has occurred"
           message="Fetching data failed"
