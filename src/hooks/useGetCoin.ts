@@ -36,6 +36,7 @@ export function useGetCoins() {
   return useQuery({
     queryKey,
     enabled: !!currency?.currencyCoin,
+    staleTime: 1000 * 30,
     queryFn: async () => {
       const baseUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${
         currency.currencyCoin || "eur"
@@ -60,6 +61,7 @@ export function useGetPriceCoins(getDay: number) {
   return useQuery({
     queryKey,
     refetchOnWindowFocus: false,
+    staleTime: 1000 * 30,
     enabled: getDay !== undefined && selectedInfo?.id !== undefined,
     queryFn: async () => {
       const baseUrl = `https://api.coingecko.com/api/v3/coins/${
