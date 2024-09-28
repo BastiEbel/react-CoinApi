@@ -55,7 +55,7 @@ function CoinContainer() {
   }
 
   return (
-    <div className="w-11/12 m-auto slider-bg">
+    <div className="px-2 w-11/12 slider-bg">
       <div className="max-[1280px]:my-6 min-[1281px]:my-0">
         <Slider {...settings}>{content}</Slider>
       </div>

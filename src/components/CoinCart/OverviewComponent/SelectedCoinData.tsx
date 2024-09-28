@@ -39,11 +39,11 @@ export default function SelectedCoinData() {
   return (
     <div className="lg:mx-0 2xl:mx-8 flex flex-col md:content-normal items-center justify-around">
       <div className="w-full px-8 md:px-4 py-4 flex justify-between items-center">
-        <p className="text-gray-500 text-lg md:text-sm 2xl:text-base">
+        <p className="text-gray-500 max-sm:text-sm text-lg md:text-sm 2xl:text-base">
           Balance
         </p>
         <p
-          className="text-lg md:text-sm 2xl:text-base"
+          className="text-lg max-sm:text-sm md:text-sm 2xl:text-base"
           style={{ color: color }}
         >
           {percent?.toFixed(2)} %
@@ -53,7 +53,7 @@ export default function SelectedCoinData() {
       <div className="w-full px-8 md:px-4 py-4 flex justify-between items-center">
         <div className="flex">
           <p
-            className="md:text-sm text-lg 2xl:text-base mr-4"
+            className="max-sm:text-sm md:text-sm text-lg 2xl:text-base mr-4"
             style={{
               color: "#00dc00",
             }}
@@ -61,7 +61,7 @@ export default function SelectedCoinData() {
             {formatterPrices(price)}
           </p>
           <p
-            className="md:text-sm text-lg 2xl:text-base"
+            className="max-sm:text-sm md:text-sm text-lg 2xl:text-base"
             style={{ color: "#6b7280" }}
           >
             {coinCurrency?.currencyName}
@@ -72,17 +72,17 @@ export default function SelectedCoinData() {
 
       <div className="w-full px-8 md:px-4 flex justify-between items-center">
         <div className="flex-1 mb-0 text-center md:text-center">
-          <p className="text-gray-500 flex md:text-sm text-lg 2xl:text-base">
+          <p className="text-gray-500 flex max-sm:text-sm md:text-sm text-lg 2xl:text-base">
             24h lowest price
           </p>
           <div className="flex md:justify-center">
             <p
-              className="md:text-sm text-lg 2xl:text-base mr-4"
+              className="max-sm:text-sm md:text-sm text-lg 2xl:text-base mr-4"
               style={{ color: "red" }}
             >
               {formatterPrices(low_24h)}
             </p>
-            <p className="text-gray-500 md:text-sm text-center text-lg 2xl:text-base">
+            <p className="text-gray-500 max-sm:text-sm md:text-sm text-center text-lg 2xl:text-base">
               {coinCurrency?.currencyName}
             </p>
           </div>
@@ -91,19 +91,19 @@ export default function SelectedCoinData() {
         <div className="border mx-4 border-gray-500 h-12"></div>
 
         <div className="flex-1 w-full text-center md:text-center text-nowrap">
-          <p className="text-gray-500 flex justify-end md:justify-normal md:text-sm text-lg 2xl:text-base">
+          <p className="text-gray-500 max-sm:text-sm flex justify-end md:justify-normal md:text-sm text-lg 2xl:text-base">
             24h highest price
           </p>
           <div className="flex justify-end md:justify-center">
             <p
-              className="md:text-sm text-lg 2xl:text-base mr-4"
+              className="max-sm:text-sm md:text-sm text-lg 2xl:text-base mr-4"
               style={{
                 color: "#00dc00",
               }}
             >
               {formatterPrices(high_24h)}
             </p>
-            <p className="text-gray-500 md:text-sm text-lg 2xl:text-base">
+            <p className="text-gray-500 max-sm:text-sm md:text-sm text-lg 2xl:text-base">
               {coinCurrency?.currencyName}
             </p>
           </div>

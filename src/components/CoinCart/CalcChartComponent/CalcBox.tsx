@@ -47,7 +47,7 @@ export default function CalcBox() {
   }
 
   return (
-    <div className="col-span-3 md:col-span-2 lg:col-span-2 mx-2 md:ml-3 mb-6 xl:ml-8 glass ">
+    <div className="col-span-1 md:col-span-2 lg:col-span-2 md:ml-3 mb-6 glass ">
       <div className="h-72 xl:h-96 flex flex-col items-center justify-evenly">
         <span className="text-xl xl:text-2xl w-3/4 lg:my-4 bg-gradient-to-r from-gray-300 to-gray-800 text-transparent bg-clip-text">
           Exchange

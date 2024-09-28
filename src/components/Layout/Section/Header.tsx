@@ -27,14 +27,14 @@ function Header() {
 
   return (
     <>
-      <div className="w-full py-4 flex justify-between items-center shadow-md shadow-slate-500">
+      <div className="w-screen py-2 min-[405px]:py-4 flex justify-between items-center shadow-md shadow-slate-500">
         <div className="flex items-center justify-between">
           <img
-            className="w-9 h-9 sm:w-12 sm:h-12 mx-5"
+            className="w-8 h-8 sm:w-10 sm:h-10 mx-5"
             src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
             alt="Coin Api"
           />
-          <h1 className="bg-gradient-to-r from-teal-300 to-teal-800 text-transparent bg-clip-text font-bold inline-block text-3xl sm:text-5xl">
+          <h1 className="bg-gradient-to-r from-teal-300 to-teal-800 text-transparent bg-clip-text font-bold inline-block max-[405px]:text-xl min-[406]:text-3xl sm:text-5xl">
             Coin App
           </h1>
         </div>

@@ -27,7 +27,7 @@ function CoinCard({ title, image, price, percent, onClick }: Coin) {
       onClick={onClick}
       className={`${
         selectCoin?.coin === title ? "selectCoin" : "glass"
-      } hover:bg-gradient-to-r from-teal-800 to-teal-950 transition duration-300 border-white mx-3 rounded-lg p-4 cursor-pointer grid grid-cols-1 gap-2`}
+      } hover:bg-gradient-to-r from-teal-800 to-teal-950 transition duration-300 border-white rounded-lg p-4 sm:mx-2 cursor-pointer grid grid-cols-1 gap-2`}
     >
       <div className="flex items-center justify-between">
         <img

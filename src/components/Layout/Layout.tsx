@@ -64,8 +64,8 @@ function Layout() {
   if (data) {
     content = (
       <>
-        <div className="grid grid-flow-row w-full md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          <div className="col-span-3 lg:col-span-4 md:h-72 mx-2 xl:mx-8 my-6 glass md:flex md:items-center md:justify-around">
+        <div className="max-sm:px-4 grid grid-flow-row sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <div className="max-sm:col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4 md:h-72 xl:ml-4 xl:mr-3 my-6 glass md:flex md:items-center md:justify-around">
             <SelectedCoinData />
             <div className="border border-gray-500 w-full md:w-0 mt-4 md:min-h-52"></div>
             <HighestCoinChart />
@@ -79,7 +79,7 @@ function Layout() {
     );
   }
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-screen max-sm:px-2 flex flex-col items-center justify-center">
       <Header />
       {content}
     </div>

@@ -14,8 +14,8 @@ export default function CoinOverview() {
     : [];
 
   return (
-    <div className="col-span-3 md:col-span-1 lg:col-span-2 scroll-bar xl:mr-8 mx-2 md:mr-3 mb-6 xl:my-6 glass flex flex-col items-center">
-      <div className="overflow-auto w-full lg:h-72 hover:overflow-y-scroll h-64 p-4">
+    <div className="col-span-1 md:col-span-1 lg:col-span-2 scroll-bar xl:mt-6 md:mr-8 xl:ml-3 mb-6 glass flex flex-col items-center">
+      <div className="overflow-auto w-full h-72 hover:overflow-y-scroll p-4">
         {coins && coins.length > 0 ? (
           coins.map((coin) => (
             <div

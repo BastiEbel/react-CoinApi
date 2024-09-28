@@ -82,28 +82,28 @@ export default function ChartBox() {
   switch (getDay) {
     case 1:
       showDay = (
-        <div className="text-base mx-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="max-sm:text-lg sm:text-base mx-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           24h {selectedInfo?.coin}
         </div>
       );
       break;
     case 14:
       showDay = (
-        <div className="text-base mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="max-sm:text-lg sm:text-base mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           14 Days {selectedInfo.coin}
         </div>
       );
       break;
     default:
       showDay = (
-        <div className="text-base mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
+        <div className="max-sm:text-lg sm:text-base mr-8 bg-gradient-to-r from-gray-200 to-gray-500 text-transparent bg-clip-text">
           30 Days {selectedInfo.coin}
         </div>
       );
   }
 
   return (
-    <div className="md:col-span-3 lg:col-span-4 mx-2 md:mx-0 xl:ml-6 max-h-96 px-4 pt-4 pb-8 flex flex-col items-center xl:mr-8 glass rounded-lg">
+    <div className=" col-span-1 md:col-span-3 lg:col-span-4 md:mx-0 xl:ml-6 max-h-96 max-sm:px-0 max-sm:pb-16 max-sm:pt-4 px-4 pt-4 pb-8 flex flex-col items-center xl:mr-8 glass rounded-lg">
       <div className="w-full flex">
         {showDay}
         <Button
@@ -111,7 +111,7 @@ export default function ChartBox() {
             getDay === 1
               ? "text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }text-base shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }max-sm:text-sm sm:text-base shadow-lg sm:h-auto max-sm:w-16 sm:w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(1)}
           disable={false}
         >
@@ -122,7 +122,7 @@ export default function ChartBox() {
             getDay === 14
               ? "text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }text-base shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }max-sm:text-sm sm:text-base shadow-lg sm:h-auto max-sm:w-16 sm:w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(14)}
           disable={false}
         >
@@ -133,7 +133,7 @@ export default function ChartBox() {
             getDay === 30
               ? "text-white bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300"
               : ""
-          }text-base shadow-lg h-auto w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
+          }max-sm:text-sm sm:text-base shadow-lg sm:h-auto max-sm:w-16 sm:w-20 bg-slate-900 text-gray-400 border border-gray-400 rounded-xl mx-2 cursor-pointer hover:bg-gradient-to-r from-teal-700 to-teal-900 transition duration-300 hover:text-white hover:shadow-teal-200/20 transition duration-300`}
           onClick={() => setGetDay(30)}
           disable={false}
         >
