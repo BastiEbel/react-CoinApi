@@ -103,7 +103,7 @@ export default function ChartBox() {
   }
 
   return (
-    <div className=" col-span-1 md:col-span-3 lg:col-span-4 md:mx-0 xl:ml-6 max-h-96 max-sm:px-0 max-sm:pb-16 max-sm:pt-4 px-4 pt-4 pb-8 flex flex-col items-center xl:mr-8 glass rounded-lg">
+    <div className=" col-span-1 md:col-span-3 lg:col-span-4 md:mx-0 xl:ml-6 max-h-96 max-sm:px-0 max-sm:pb-16 max-sm:pt-4 px-4 pt-4 pb-8 flex flex-col items-center glass rounded-lg">
       <div className="w-full flex">
         {showDay}
         <Button
